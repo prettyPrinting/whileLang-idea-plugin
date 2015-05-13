@@ -1,0 +1,17 @@
+{
+    parserClass="com.intellij.whileLang.parser.WhileParser"
+    extends="com.intellij.extapi.psi.ASTWrapperPsiElement"
+
+    psiClassPrefix="While"
+    psiImplClassSuffix="Impl"
+    psiPackage="com.intellij.whileLang.psi.impl"
+
+    elementTypeHolderClass="com.intellij.whileLang.psi.WhileTypes"
+    elementTypeClass="com.intellij.whileLang.psi.WhileElementType"
+    tokenTypeClass="com.intellij.whileLang.psi.WhileTokenType"
+}
+
+whileFile ::= item_*
+
+private item_ ::= (property|COMMENT|CRLF)
+property ::= (KEY? SEPARATOR VALUE?) | KEY
