@@ -12,6 +12,9 @@
 }
 
 whileFile ::= item_*
+private item_ ::= (stmt|COMMENT|CRLF)
+stmt ::= (KEY? ASSIGN VALUE? SEPARATOR)
+//whileFile ::= item_*
 
-private item_ ::= (property|COMMENT|CRLF)
-property ::= (KEY? SEPARATOR VALUE?) | KEY
+//private item_ ::= (property|COMMENT|CRLF)
+//property ::= (KEY? SEPARATOR VALUE?) | KEY

@@ -26,6 +26,7 @@
   <extensions defaultExtensionNs="com.intellij">
       <fileTypeFactory implementation="com.intellij.whileLang.WhileFileTypeFactory"/>
       <lang.parserDefinition language="While" implementationClass="com.intellij.whileLang.WhileParserDefinition"/>
+      <lang.syntaxHighlighterFactory key="While" implementationClass="com.intellij.whileLang.WhileSyntaxHighlighterFactory"/>
   </extensions>
 
   <application-components>
