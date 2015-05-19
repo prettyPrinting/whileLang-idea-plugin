@@ -13,8 +13,10 @@
 
 whileFile ::= item_*
 private item_ ::= (stmt|COMMENT|CRLF)
-stmt ::= (KEY? ASSIGN VALUE? SEPARATOR)
-//whileFile ::= item_*
-
-//private item_ ::= (property|COMMENT|CRLF)
-//property ::= (KEY? SEPARATOR VALUE?) | KEY
+stmt ::= assignStmt|ifStmt|whileStmt|writeStmt|readStmt
+expr ::= NUMBER
+writeStmt  ::= WRITE expr SEPARATOR
+readStmt   ::= READ VARNAME SEPARATOR
+assignStmt ::= VARNAME ASSIGN expr SEPARATOR
+ifStmt     ::= IF VARNAME THEN VARNAME ELSE VARNAME FI
+whileStmt  ::= WHILE VARNAME DO VARNAME OD
