@@ -9,14 +9,40 @@
     elementTypeHolderClass="com.intellij.whileLang.psi.WhileTypes"
     elementTypeClass="com.intellij.whileLang.psi.WhileElementType"
     tokenTypeClass="com.intellij.whileLang.psi.WhileTokenType"
+
+    tokens=[
+      space='regexp:\s+'
+
+      CRLF='regexp:(\r\n|\n)'
+      SEP=';'
+      WRITE="write"; READ="read"
+      WHILE="while"; DO="do"; OD="od"
+      IF="if"; FI="fi"
+
+      SKIP="skip"
+      number="regexp:\d+(\.\d*)?"
+      op_1='+'; op_2='-'
+      id='regexp:\p{Alpha}\w*'
+    ]
 }
 
 whileFile ::= item_*
-private item_ ::= (stmt|COMMENT|CRLF)
-stmt ::= assignStmt|ifStmt|whileStmt|writeStmt|readStmt
-expr ::= NUMBER
-writeStmt  ::= WRITE expr SEPARATOR
-readStmt   ::= READ VARNAME SEPARATOR
-assignStmt ::= VARNAME ASSIGN expr SEPARATOR
-ifStmt     ::= IF VARNAME THEN VARNAME ELSE VARNAME FI
-whileStmt  ::= WHILE VARNAME DO VARNAME OD
+private item_ ::= !<<eof>> (stmt|COMMENT) {pin=1}
+stmt ::= skipStmt|assignStmt|ifStmt|whileStmt|writeStmt|readStmt
+skipStmt   ::= SKIP SEP
+writeStmt  ::= WRITE '(' expr ')' SEP
+readStmt   ::= READ '(' id ')' SEP
+assignStmt ::= id ASSIGN expr SEP
+ifStmt     ::= IF '(' expr ')' THEN stmt* ELSE stmt* FI
+whileStmt  ::= WHILE '(' expr ')' DO stmt* OD
+
+expr ::= factor plus_expr *
+left plus_expr ::= plus_op factor
+private plus_op ::= '+'|'-'
+private factor ::= primary mul_expr *
+left mul_expr  ::= mul_op primary
+private mul_op ::= '*'|'/'
+private primary ::= literal_expr | ref_expr | paren_expr
+paren_expr ::= '(' expr ')' {pin=1}
+ref_expr ::= id
+literal_expr ::= number | string | float

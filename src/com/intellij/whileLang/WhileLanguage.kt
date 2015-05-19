@@ -70,14 +70,14 @@ public class WhileSyntaxHighlighter(): SyntaxHighlighterBase() {
         private val EMPTY_KEYS    : Array<TextAttributesKey> = array()
     }
 
-    override public fun getHighlightingLexer() = FlexAdapter(WhileLexer(null))
+    override public fun getHighlightingLexer() = FlexAdapter(_WhileLexer(null))
     override public fun getTokenHighlights(tokenType: IElementType) =
             when (tokenType) {
-                WhileTypes.SEPARATOR    -> SEPARATOR_KEYS
+                WhileTypes.SEP    -> SEPARATOR_KEYS
                 WhileTypes.ASSIGN       -> SEPARATOR_KEYS
                 WhileTypes.DO, WhileTypes.OD, WhileTypes.WHILE,
                 WhileTypes.THEN, WhileTypes.ELSE, WhileTypes.IF, WhileTypes.FI,
-                WhileTypes.READ, WhileTypes.WRITE -> KEY_KEYS
+                WhileTypes.READ, WhileTypes.WRITE, WhileTypes.SKIP -> KEY_KEYS
                 WhileTypes.NUMBER       -> VALUE_KEYS
                 WhileTypes.COMMENT      -> COMMENT_KEYS
                 TokenType.BAD_CHARACTER -> BAD_CHAR_KEYS

@@ -17,7 +17,7 @@ import java.io.Reader
 /**
  * Created by me on 5/14/15.
  */
-public class WhileLexerAdapter(): FlexAdapter(WhileLexer(null)) {}
+public class WhileLexerAdapter(): FlexAdapter(_WhileLexer(null)) {}
 
 public class WhileParserDefinition(): ParserDefinition {
     companion object {
@@ -27,7 +27,7 @@ public class WhileParserDefinition(): ParserDefinition {
                 IFileElementType(Language.findInstance<WhileLanguage>(javaClass<WhileLanguage>()))
     }
 
-    override public fun createLexer(project: Project) = FlexAdapter(WhileLexer(null))
+    override public fun createLexer(project: Project) = FlexAdapter(_WhileLexer(null))
     override public fun getWhitespaceTokens() = WHITE_SPACES
     override public fun getCommentTokens   () = COMMENTS
     override public fun getStringLiteralElements() = TokenSet.EMPTY
