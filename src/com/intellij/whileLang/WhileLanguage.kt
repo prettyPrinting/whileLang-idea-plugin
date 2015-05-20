@@ -78,7 +78,8 @@ public class WhileSyntaxHighlighter(): SyntaxHighlighterBase() {
                 WhileTypes.DO, WhileTypes.OD, WhileTypes.WHILE,
                 WhileTypes.THEN, WhileTypes.ELSE, WhileTypes.IF, WhileTypes.FI,
                 WhileTypes.READ, WhileTypes.WRITE, WhileTypes.SKIP -> KEY_KEYS
-                WhileTypes.NUMBER       -> VALUE_KEYS
+                WhileTypes.NUMBER, WhileTypes.TRUE,
+                WhileTypes.FALSE        -> VALUE_KEYS
                 WhileTypes.COMMENT      -> COMMENT_KEYS
                 TokenType.BAD_CHARACTER -> BAD_CHAR_KEYS
                 else -> EMPTY_KEYS

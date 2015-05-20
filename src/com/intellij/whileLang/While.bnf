@@ -2,7 +2,7 @@
     parserClass="com.intellij.whileLang.parser.WhileParser"
     extends="com.intellij.extapi.psi.ASTWrapperPsiElement"
 
-    psiClassPrefix="While"
+    psiClassPrefix="Psi"
     psiImplClassSuffix="Impl"
     psiPackage="com.intellij.whileLang.psi.impl"
 
@@ -17,32 +17,74 @@
       SEP=';'
       WRITE="write"; READ="read"
       WHILE="while"; DO="do"; OD="od"
-      IF="if"; FI="fi"
+      IF="if"; FI="fi"; THEN="then"; ELSE="else"
 
       SKIP="skip"
       number="regexp:\d+(\.\d*)?"
       op_1='+'; op_2='-'
+
+      NOT="not";OR="or";AND="and";TRUE="true";FALSE="false"
+
       id='regexp:\p{Alpha}\w*'
+    ]
+
+    //name("*\_stmt")=statement
+    extends("(add|mul)_expr")=binary_expr
+    extends("(and|or)_bexpr")=binary_bexpr
+    extends("rel_bexpr")=binary_expr
+
+    extends(".*_stmt")=stmt
+    extends(".*_bexpr")=bexpr
+    extends(".*_expr")=expr
+}
+
+whileFile ::= codeblock|COMMENT
+codeblock ::= stmt*
+stmt ::= skip_stmt|assign_stmt|if_stmt|while_stmt|write_stmt|read_stmt
+skip_stmt   ::= SKIP SEP
+write_stmt  ::= WRITE '(' expr ')' SEP
+read_stmt   ::= READ '(' id ')' SEP
+assign_stmt ::= id ASSIGN expr SEP
+if_stmt     ::= IF '(' bexpr ')' THEN codeblock (ELSE codeblock)? FI {
+    methods=[
+        thenBranch="/codeblock[0]"
+        elseBranch="/codeblock[1]"
+    ]
+}
+while_stmt  ::= WHILE '(' bexpr ')' DO codeblock OD
+
+fake binary_expr ::= expr expr {
+    methods=[
+        left="/expr[0]"
+        right="/expr[1]"
     ]
 }
 
-whileFile ::= item_*
-private item_ ::= !<<eof>> (stmt|COMMENT) {pin=1}
-stmt ::= skipStmt|assignStmt|ifStmt|whileStmt|writeStmt|readStmt
-skipStmt   ::= SKIP SEP
-writeStmt  ::= WRITE '(' expr ')' SEP
-readStmt   ::= READ '(' id ')' SEP
-assignStmt ::= id ASSIGN expr SEP
-ifStmt     ::= IF '(' expr ')' THEN stmt* ELSE stmt* FI
-whileStmt  ::= WHILE '(' expr ')' DO stmt* OD
-
 expr ::= factor plus_expr *
 left plus_expr ::= plus_op factor
-private plus_op ::= '+'|'-'
+plus_op ::= '+'|'-'
 private factor ::= primary mul_expr *
 left mul_expr  ::= mul_op primary
-private mul_op ::= '*'|'/'
+mul_op ::= '*'|'/'
 private primary ::= literal_expr | ref_expr | paren_expr
 paren_expr ::= '(' expr ')' {pin=1}
 ref_expr ::= id
-literal_expr ::= number | string | float
+literal_expr ::= number
+
+fake binary_bexpr ::= bexpr bexpr {
+    methods=[
+        left="/bexpr[0]"
+        right="/bexpr[1]"
+    ]
+}
+
+bexpr ::= bfactor or_bexpr *
+left or_bexpr ::= OR bfactor
+private bfactor ::= bprimary and_bexpr *
+left and_bexpr ::= AND bprimary
+private bprimary ::= literal_bexpr | not_bexpr | paren_bexpr | rel_bexpr
+paren_bexpr ::= '(' bexpr ')' {pin=1}
+not_bexpr ::= NOT bexpr
+literal_bexpr ::= TRUE | FALSE
+rel_bexpr ::= expr rel expr
+rel ::= '<'|'<='|'='|'>='|'>'
