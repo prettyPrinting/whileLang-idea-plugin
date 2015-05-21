@@ -2,10 +2,9 @@ package com.intellij
 
 import com.intellij.openapi.util.TextRange
 import com.intellij.psi.*
+import com.intellij.whileLang.Printer
 import org.jetbrains.format.FormatSet
-import org.jetbrains.likePrinter.util.box.Box
-import org.jetbrains.likePrinter.util.box.toBox
-import org.jetbrains.likePrinter.util.string.*
+import com.intellij.CommentConnectionUtils.VariantConstructionContext
 
 /**
  * User: anlun

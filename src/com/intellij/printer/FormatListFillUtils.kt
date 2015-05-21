@@ -1,12 +1,8 @@
 package com.intellij;
 
-import org.jetbrains.likePrinter.templateBase.template.*
-
-import org.jetbrains.likePrinter.util.base.*
 import java.util.ArrayList
 import org.jetbrains.format.Format
 import org.jetbrains.format.FormatSet
-import org.jetbrains.likePrinter.util.box.toBox
 
 /**
  * User: anlun

@@ -1,21 +1,13 @@
 package com.intellij;
 
 import com.intellij.openapi.util.TextRange
-import org.jetbrains.likePrinter.util.base.*
 import com.intellij.psi.PsiElement
-import org.jetbrains.likePrinter.util.psiElement.deleteSpaces
 import org.jetbrains.format.Format
-import org.jetbrains.likePrinter.printer.Printer
 import java.util.ArrayList
-import org.jetbrains.likePrinter.util.psiElement.toSmartInsertPlace
 import com.intellij.psi.PsiBlockStatement
-import org.jetbrains.likePrinter.util.psiElement.getVariants
 import java.util.HashMap
-import org.jetbrains.likePrinter.printer.CommentConnectionUtils.VariantConstructionContext
 import java.util.Comparator
-import org.jetbrains.likePrinter.util.string.*
 import java.util.HashSet
-import org.jetbrains.likePrinter.util.box.Box
 import org.jetbrains.format.FormatSet
 
 /**

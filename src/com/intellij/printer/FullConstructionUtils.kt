@@ -1,10 +1,6 @@
 package com.intellij;
 
-import org.jetbrains.likePrinter.templateBase.template.*
 import com.intellij.openapi.util.TextRange
-import org.jetbrains.likePrinter.util.base.*
-import org.jetbrains.likePrinter.util.string.*
-import org.jetbrains.likePrinter.util.box.Box
 
 /**
  * User: anlun
