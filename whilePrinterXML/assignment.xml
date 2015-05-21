@@ -1,4 +1,4 @@
-<component name="AssignStmt" psiComponentClass="PsiAssigntStmt" createFromText="Statement">
+<component name="AssignStmt" psiComponentClass="PsiAssignStmt" createFromText="Statement">
     <subtree name="variable"       psiGetMethod="Id"   isEverywhereSuit="true"
              isCodeBlock="false"    isRequired="false" />
     <subtree name="expression"     psiGetMethod="Expr" isEverywhereSuit="true"
