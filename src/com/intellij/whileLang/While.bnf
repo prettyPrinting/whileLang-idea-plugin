@@ -32,7 +32,6 @@
     //name("*\_stmt")=statement
     extends("(add|mul)_expr")=binary_expr
     extends("(and|or)_bexpr")=binary_bexpr
-    extends("rel_bexpr")=binary_expr
     extends("(plus|mul)_op|rel")=ar_op
 
     extends(".*_stmt")=stmt
@@ -55,7 +54,7 @@ if_stmt     ::= IF '(' bexpr ')' THEN stmt_list (ELSE stmt_list)? FI {
 }
 while_stmt  ::= WHILE '(' bexpr ')' DO stmt_list OD
 
-fake ar_op ::= plus_op|mul_op|rel
+fake ar_op ::= plus_op|mul_op
 fake binary_expr ::= expr ar_op expr {
     methods=[
         left="/expr[0]"
@@ -90,5 +89,10 @@ private bprimary ::= literal_bexpr | not_bexpr | paren_bexpr | rel_bexpr
 paren_bexpr ::= '(' bexpr ')' {pin=1}
 not_bexpr ::= NOT bexpr
 literal_bexpr ::= TRUE | FALSE
-rel_bexpr ::= expr rel expr
+rel_bexpr ::= expr rel expr {
+    methods=[
+        left="/expr[0]"
+        right="/expr[1]"
+    ]
+}
 rel ::= '<'|'<='|'='|'>='|'>'

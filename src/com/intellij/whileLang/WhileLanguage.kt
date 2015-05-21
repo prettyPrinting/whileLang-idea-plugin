@@ -126,6 +126,7 @@ public class WhileElementFactory(val project: Project) {
         return writeStmt?.getExpr()
     }
     public fun createParenExprFromText(text: String): PsiParenExpr? = createExprFromText(text) as? PsiParenExpr
+    public fun createBinaryExprFromText(text: String): PsiBinaryExpr? = createExprFromText(text) as? PsiBinaryExpr
 
     public fun createBexprFromText(text: String): PsiBexpr? {
         val whileStmt = createFileFromText("while ($text) do skip; od").getStmtList()?.getStmtList()?.get(0) as? PsiWhileStmt
@@ -134,4 +135,5 @@ public class WhileElementFactory(val project: Project) {
     public fun createParenBexprFromText(text: String): PsiParenBexpr? = createBexprFromText(text) as? PsiParenBexpr
     public fun createNotBexprFromText(text: String): PsiNotBexpr? = createBexprFromText(text) as? PsiNotBexpr
     public fun createBinaryBexprFromText(text: String): PsiBinaryBexpr? = createBexprFromText(text) as? PsiBinaryBexpr
+    public fun createRelBexprFromText(text: String): PsiRelBexpr? = createBexprFromText(text) as? PsiRelBexpr
 }
