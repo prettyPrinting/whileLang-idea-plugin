@@ -10,7 +10,6 @@ import com.intellij.psi.TokenType
 import com.intellij.psi.tree.IFileElementType
 import com.intellij.psi.tree.TokenSet
 import com.intellij.whileLang.parser.WhileParser
-import com.intellij.whileLang.psi.WhileFile
 import com.intellij.whileLang.psi.WhileTypes
 import java.io.Reader
 

@@ -26,6 +26,7 @@ import org.jetbrains.likePrinter.printer.PrinterSettings
 import com.intellij.CommentConnectionUtils
 import com.intellij.CommentConnectionUtils.VariantConstructionContext
 import com.intellij.*
+import com.intellij.whileLang.psi
 import com.intellij.whileLang.psi.impl.*
 
 
@@ -34,7 +35,7 @@ class Printer(
 , private val settings: PrinterSettings
 ): Memoization(), CommentConnectionUtils {
     companion object {
-        public fun create(templateFile: WhileFile?, project: Project, width: Int): Printer =
+        public fun create(templateFile: WhileFile, project: Project, width: Int): Printer =
                 Printer(templateFile, PrinterSettings.createProjectSettings(width, project))
     }
 

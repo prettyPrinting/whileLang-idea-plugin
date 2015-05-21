@@ -20,6 +20,7 @@ import com.intellij.psi.tree.IElementType
 import com.intellij.whileLang.psi.WhileTypes
 import com.intellij.whileLang.psi.impl.*
 import java.awt.*
+import com.intellij.whileLang.*
 
 /**
  * User: anlun
@@ -32,6 +33,8 @@ public class WhileFile(provider: FileViewProvider) : PsiFileBase(provider, While
     override fun getFileType(): FileType { return WhileFileType.INSTANCE }
     override fun accept(visitor: PsiElementVisitor) { visitor.visitFile(this) }
     public fun getStmtList() : PsiStmtList? = findChildByClass(javaClass<PsiStmtList>())
+    override public fun toString() = "While File"
+    override public fun getIcon(flags: Int) = super.getIcon(flags)
 }
 
 public class WhileIcons() {
@@ -103,8 +106,8 @@ public class WhileSyntaxHighlighterFactory(): SyntaxHighlighterFactory() {
 }
 
 public class WhileElementFactory(val project: Project) {
-    public fun createFileFromText(text: String): WhileFile {
-        return PsiFileFactory.getInstance(project).createFileFromText("tmp.l", WhileLanguage.INSTANCE, text) as WhileFile
+    public fun createFileFromText(text: String): com.intellij.whileLang.WhileFile {
+        return PsiFileFactory.getInstance(project).createFileFromText("tmp.l", WhileLanguage.INSTANCE, text) as com.intellij.whileLang.WhileFile
     }
 
     public fun createStmtFromText(text: String): PsiStmt? {
