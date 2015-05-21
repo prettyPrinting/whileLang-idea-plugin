@@ -1,6 +1,5 @@
 package com.intellij.whileLang;
 
-import com.intellij.CommentConnectionUtils
 import com.intellij.psi.*
 import com.intellij.openapi.project.Project
 
@@ -24,18 +23,18 @@ import org.jetbrains.format.FormatMap1D
 import org.jetbrains.format.FormatList
 import org.jetbrains.likePrinter.printer.Memoization
 import org.jetbrains.likePrinter.printer.PrinterSettings
-import com.intellij.whileLang.psi.impl.*
+import com.intellij.CommentConnectionUtils
 import com.intellij.*
+import com.intellij.whileLang.psi.impl.*
 import com.intellij.CommentConnectionUtils.VariantConstructionContext
 
 
-
 class Printer(
-  templateFile: PsiWHILEFile?
+  templateFile: WhileFile?
 , private val settings: PrinterSettings
 ): Memoization(), CommentConnectionUtils {
     companion object {
-        public fun create(templateFile: PsiWHILEFile?, project: Project, width: Int): Printer =
+        public fun create(templateFile: WhileFile?, project: Project, width: Int): Printer =
                 Printer(templateFile, PrinterSettings.createProjectSettings(width, project))
     }
 
@@ -68,7 +67,7 @@ class Printer(
 
     //WARNING: must be declared before init!!!
     //COMPONENTS
-    public val AssignmentStmtComponent: AssignStmtComponent = AssignStmtComponent(this)
+    public val AssignStmtComponent: AssignStmtComponent = AssignStmtComponent(this)
     public val IfStmtComponent: IfStmtComponent = IfStmtComponent(this)
     public val ReadStmtComponent: ReadStmtComponent = ReadStmtComponent(this)
     public val SkipStmtComponent: SkipStmtComponent = SkipStmtComponent(this)
@@ -79,11 +78,11 @@ class Printer(
     public val ParenExprComponent: ParenExprComponent = ParenExprComponent(this)
     public val BinaryBexprComponent: BinaryBexprComponent = BinaryBexprComponent(this)
     public val ParenBexprComponent: ParenBexprComponent = ParenBexprComponent(this)
-    public val NotBexprComponent: NotBexprComponent = NotBexprComponent(this)
+    public val NotBexpr: NotBexprComponent = NotBexprComponent(this)
     
-    public val WHILEFILECOMPONENT: WHILEFILECOMPONENT = WHILEFILECOMPONENT(this)
+    public val WhileFileComponent: WhileFileComponent = WhileFileComponent(this)
 
-    public fun reprint(mFile: PsiWHILEFile) { reprintElementWithChildren(mFile) }
+    public fun reprint(mFile: WhileFile) { reprintElementWithChildren(mFile) }
 
     init {
         if (templateFile != null) {
@@ -94,11 +93,11 @@ class Printer(
     /// public only for testing purposes!!!
     public fun reprintElementWithChildren(psiElement: PsiElement) {
         reprintElementWithChildren_AllMeaningful(psiElement) // variant for partial template
-//        reprintElementWithChildren_OnlyPsiWHILEFile(psiElement) // variant for situations with full template
+//        reprintElementWithChildren_OnlyWhileFile(psiElement) // variant for situations with full template
     }
 
-    private fun reprintElementWithChildren_OnlyPsiWHILEFile(psiElement: PsiElement) {
-        walker(psiElement) { p -> if (p is PsiWHILEFile) applyTmplt(p) }
+    private fun reprintElementWithChildren_OnlyWhileFile(psiElement: PsiElement) {
+        walker(psiElement) { p -> if (p is WhileFile) applyTmplt(p) }
     }
 
     private fun reprintElementWithChildren_AllMeaningful(psiElement: PsiElement) {
@@ -160,7 +159,7 @@ class Printer(
     private fun getTemplateVariants(p: PsiElement, context: VariantConstructionContext): FormatSet {
         val variants: FormatSet =
             when(p) {
-                is PsiAssignStmt -> AssignmentStmtComponent.getVariants(p, context)
+                is PsiAssignStmt -> AssignStmtComponent.getVariants(p, context)
                 is PsiIfStmt -> IfStmtComponent.getVariants(p, context)
                 is PsiReadStmt -> ReadStmtComponent.getVariants(p, context)
                 is PsiSkipStmt -> SkipStmtComponent.getVariants(p, context)
@@ -171,9 +170,9 @@ class Printer(
                 is PsiParenExpr -> ParenExprComponent.getVariants(p, context)
                 is PsiBinaryBexpr -> BinaryBexprComponent.getVariants(p, context)
                 is PsiParenBexpr -> ParenBexprComponent.getVariants(p, context)
-                is PsiNotBexpr -> NotBexprComponent.getVariants(p, context)
+                is PsiNotBexpr -> NotBexpr.getVariants(p, context)
                 
-                is PsiWHILEFile                    ->                    WHILEFILECOMPONENT.getVariants(p, context)
+                is WhileFile                    ->                    WhileFileComponent.getVariants(p, context)
 
                 //Just cut from text
                 else -> {
@@ -188,11 +187,11 @@ class Printer(
     public  fun areTemplatesFilled(): Boolean = areTemplatesFilled
     private var areTemplatesFilled  : Boolean = false
 
-    public fun fillTemplateLists(templateFile: PsiWHILEFile) {
+    public fun fillTemplateLists(templateFile: WhileFile) {
         areTemplatesFilled = true
         walker(templateFile, { p: PsiElement ->
             when (p) {
-                is PsiAssignStmt -> AssignmentStmtComponent.getAndSaveTemplate(p)
+                is PsiAssignStmt -> AssignStmtComponent.getAndSaveTemplate(p)
                 is PsiIfStmt -> IfStmtComponent.getAndSaveTemplate(p)
                 is PsiReadStmt -> ReadStmtComponent.getAndSaveTemplate(p)
                 is PsiSkipStmt -> SkipStmtComponent.getAndSaveTemplate(p)
@@ -203,7 +202,7 @@ class Printer(
                 is PsiParenExpr -> ParenExprComponent.getAndSaveTemplate(p)
                 is PsiBinaryBexpr -> BinaryBexprComponent.getAndSaveTemplate(p)
                 is PsiParenBexpr -> ParenBexprComponent.getAndSaveTemplate(p)
-                is PsiNotBexpr -> NotBexprComponent.getAndSaveTemplate(p)
+                is PsiNotBexpr -> NotBexpr.getAndSaveTemplate(p)
                 
                 else -> 5 + 5
             }
@@ -259,7 +258,7 @@ class Printer(
         val startLineOffset = p.getOffsetInStartLine()
         val newElementText = chosenFormat.toText(startLineOffset, "")
 
-        if (p is PsiWHILEFile) {
+        if (p is WhileFile) {
             val document = PsiDocumentManager.getInstance(getProject())?.getDocument(p)
             val oldDocSize = document?.getText()?.size
             if (document == null || oldDocSize == null) { return }

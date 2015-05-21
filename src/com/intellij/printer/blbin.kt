@@ -5,6 +5,7 @@ import org.jetbrains.format.FormatSet
 import java.util.HashMap
 import java.util.HashSet
 import com.intellij.CommentConnectionUtils.VariantConstructionContext
+import com.intellij.whileLang.WhileElementFactory
 import com.intellij.whileLang.psi.impl.PsiBinaryBexpr
 
 
@@ -141,7 +142,7 @@ public class BinaryBexprComponent(
     
     override protected fun getNewElement(
             text: String
-            , elementFactory: PsiElementFactory
+            , elementFactory: WhileElementFactory
     ): PsiBinaryBexpr? {
         try {
             val newP = elementFactory.createBexpressionFromText(text, null)

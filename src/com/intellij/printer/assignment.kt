@@ -5,6 +5,7 @@ import org.jetbrains.format.FormatSet
 import java.util.HashMap
 import java.util.HashSet
 import com.intellij.CommentConnectionUtils.VariantConstructionContext
+import com.intellij.whileLang.WhileElementFactory
 import com.intellij.whileLang.psi.impl.PsiAssignStmt
 
 
@@ -100,7 +101,7 @@ public class AssignStmtComponent(
     
     override protected fun getNewElement(
             text: String
-            , elementFactory: PsiElementFactory
+            , elementFactory: WhileElementFactory
     ): PsiAssignStmt? {
         try {
             val newP = elementFactory.createStatementFromText(text, null)

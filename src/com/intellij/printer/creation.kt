@@ -39,28 +39,28 @@ public fun readFile(vf: VirtualFile): String {
     return ""
 }
 
-public fun fillPrinterTemplatesByFile(file: VirtualFile, printer: Printer, factory: PsiFileFactory, tabSize: Int) {
-    VfsUtilCore.visitChildrenRecursively(file, object: VirtualFileVisitor<Int>() {
-        public override fun visitFile(file: VirtualFile) : Boolean {
-            if (file.isDirectory()) { return true }
-            val extension = file.getExtension()
-            if (extension?.compareToIgnoreCase("java") ?: 1 != 0) { return true }
+//public fun fillPrinterTemplatesByFile(file: VirtualFile, printer: Printer, factory: PsiFileFactory, tabSize: Int) {
+//    VfsUtilCore.visitChildrenRecursively(file, object: VirtualFileVisitor<Int>() {
+//        public override fun visitFile(file: VirtualFile) : Boolean {
+//            if (file.isDirectory()) { return true }
+//            val extension = file.getExtension()
+//            if (extension?.compareToIgnoreCase("java") ?: 1 != 0) { return true }
+//
+//            val fileSpaceIndentRepresentation = readFile(file).replaceIndentTabs(tabSize)
+//            val psiFile = factory.createFileFromText(file.getName(), fileSpaceIndentRepresentation)
+//            if (psiFile is PsiJavaFile) { printer.fillTemplateLists(psiFile) }
+//            return true
+//        }
+//    })
+//}
 
-            val fileSpaceIndentRepresentation = readFile(file).replaceIndentTabs(tabSize)
-            val psiFile = factory.createFileFromText(file.getName(), fileSpaceIndentRepresentation)
-            if (psiFile is PsiJavaFile) { printer.fillTemplateLists(psiFile) }
-            return true
-        }
-    })
-}
-
-public fun createPrinterByFile(
-     file: VirtualFile, settings: PrinterSettings, tabSize: Int
-): Printer {
-    val printer = Printer(null, settings)
-    val psiFileFactory = PsiFileFactory.getInstance(settings.project)
-    if (psiFileFactory == null) { return printer }
-    fillPrinterTemplatesByFile(file, printer, psiFileFactory, tabSize)
-    return printer
-}
+//public fun createPrinterByFile(
+//     file: VirtualFile, settings: PrinterSettings, tabSize: Int
+//): Printer {
+//    val printer = Printer(null, settings)
+//    val psiFileFactory = PsiFileFactory.getInstance(settings.project)
+//    if (psiFileFactory == null) { return printer }
+//    fillPrinterTemplatesByFile(file, printer, psiFileFactory, tabSize)
+//    return printer
+//}
 

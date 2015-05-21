@@ -5,6 +5,7 @@ import org.jetbrains.format.FormatSet
 import java.util.HashMap
 import java.util.HashSet
 import com.intellij.CommentConnectionUtils.VariantConstructionContext
+import com.intellij.whileLang.WhileElementFactory
 import com.intellij.whileLang.psi.impl.PsiStmtList
 
 
@@ -52,14 +53,17 @@ public class StmtListComponent(
             , context: VariantConstructionContext
     ): FormatSet {
         val list = p.getStmtList()
-        if (list == null) { return printer.getEmptySet() }
-        return printer.getVariants(list, context)
+        if (list == null || list.isEmpty()) { return printer.getEmptySet() }
+        
+        val listVariants = list.map { e -> printer.getVariants(e, context) }
+        val variants = listVariants.fold(printer.getInitialSet(), {r, e -> r - e})
+        return variants
     }
     
     
     override protected fun getNewElement(
             text: String
-            , elementFactory: PsiElementFactory
+            , elementFactory: WhileElementFactory
     ): PsiStmtList? {
         try {
             val newP = elementFactory.createStatementListFromText(text, null)
@@ -94,7 +98,7 @@ public class StmtListComponent(
     override protected fun getTags(p: PsiStmtList): Set<String> {
         val set = HashSet<String>()
     
-        if (p.getStmtList() != null) { set.add(LIST_TAG) }
+        if (p.getStmtList() != null && !p.getStmtList().isEmpty()) { set.add(LIST_TAG) }
         
         
     
