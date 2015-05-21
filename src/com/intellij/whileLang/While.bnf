@@ -25,6 +25,7 @@
 
       NOT="not";OR="or";AND="and";TRUE="true";FALSE="false"
 
+      assign='regexp:\:='
       id='regexp:\p{Alpha}\w*'
     ]
 
@@ -38,20 +39,20 @@
     extends(".*_expr")=expr
 }
 
-whileFile ::= codeblock|COMMENT
-codeblock ::= stmt*
+whileFile ::= stmt_list|COMMENT
+stmt_list ::= stmt*
 stmt ::= skip_stmt|assign_stmt|if_stmt|while_stmt|write_stmt|read_stmt
 skip_stmt   ::= SKIP SEP
 write_stmt  ::= WRITE '(' expr ')' SEP
 read_stmt   ::= READ '(' id ')' SEP
 assign_stmt ::= id ASSIGN expr SEP
-if_stmt     ::= IF '(' bexpr ')' THEN codeblock (ELSE codeblock)? FI {
+if_stmt     ::= IF '(' bexpr ')' THEN stmt_list (ELSE stmt_list)? FI {
     methods=[
-        thenBranch="/codeblock[0]"
-        elseBranch="/codeblock[1]"
+        thenBranch="/stmt_list[0]"
+        elseBranch="/stmt_list[1]"
     ]
 }
-while_stmt  ::= WHILE '(' bexpr ')' DO codeblock OD
+while_stmt  ::= WHILE '(' bexpr ')' DO stmt_list OD
 
 fake binary_expr ::= expr expr {
     methods=[

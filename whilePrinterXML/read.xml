@@ -1,0 +1,4 @@
+<component name="ReadStmt" psiComponentClass="PsiReadStmt" createFromText="Statement">
+    <subtree name="variable" psiGetMethod="Id"
+             isCodeBlock="false" isRequired="true" />
+</component>
