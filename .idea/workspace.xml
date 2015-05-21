@@ -26,11 +26,51 @@
       <content type="file-editors">
         <state>
           <leaf>
-            <file leaf-file-name="assignment.xml" pinned="false" current-in-tab="true">
+            <file leaf-file-name="assignment.xml" pinned="false" current-in-tab="false">
               <entry file="file://$PROJECT_DIR$/whilePrinterXML/assignment.xml">
                 <provider selected="true" editor-type-id="text-editor">
-                  <state vertical-scroll-proportion="0.17578125">
-                    <caret line="5" column="11" selection-start-line="5" selection-start-column="11" selection-end-line="5" selection-end-column="11" />
+                  <state vertical-scroll-proportion="0.0">
+                    <caret line="0" column="68" selection-start-line="0" selection-start-column="68" selection-end-line="0" selection-end-column="68" />
+                    <folding />
+                  </state>
+                </provider>
+              </entry>
+            </file>
+            <file leaf-file-name="arbin.xml" pinned="false" current-in-tab="false">
+              <entry file="file://$PROJECT_DIR$/whilePrinterXML/arbin.xml">
+                <provider selected="true" editor-type-id="text-editor">
+                  <state vertical-scroll-proportion="0.0">
+                    <caret line="1" column="70" selection-start-line="1" selection-start-column="70" selection-end-line="1" selection-end-column="70" />
+                    <folding />
+                  </state>
+                </provider>
+              </entry>
+            </file>
+            <file leaf-file-name="arparen.xml" pinned="false" current-in-tab="false">
+              <entry file="file://$PROJECT_DIR$/whilePrinterXML/arparen.xml">
+                <provider selected="true" editor-type-id="text-editor">
+                  <state vertical-scroll-proportion="0.0">
+                    <caret line="3" column="11" selection-start-line="3" selection-start-column="11" selection-end-line="3" selection-end-column="11" />
+                    <folding />
+                  </state>
+                </provider>
+              </entry>
+            </file>
+            <file leaf-file-name="blparen.xml" pinned="false" current-in-tab="false">
+              <entry file="file://$PROJECT_DIR$/whilePrinterXML/blparen.xml">
+                <provider selected="true" editor-type-id="text-editor">
+                  <state vertical-scroll-proportion="0.0">
+                    <caret line="1" column="29" selection-start-line="1" selection-start-column="29" selection-end-line="1" selection-end-column="29" />
+                    <folding />
+                  </state>
+                </provider>
+              </entry>
+            </file>
+            <file leaf-file-name="not.xml" pinned="false" current-in-tab="true">
+              <entry file="file://$PROJECT_DIR$/whilePrinterXML/not.xml">
+                <provider selected="true" editor-type-id="text-editor">
+                  <state vertical-scroll-proportion="0.01631913">
+                    <caret line="1" column="63" selection-start-line="1" selection-start-column="63" selection-end-line="1" selection-end-column="63" />
                     <folding />
                   </state>
                 </provider>
@@ -46,17 +86,47 @@
     <favorites_list name="whileLang" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="vertical" split-proportion="0.5">
+    <splitter split-orientation="vertical" split-proportion="0.65976596">
       <split-first>
         <leaf>
-          <file leaf-file-name="While.bnf" pinned="false" current-in-tab="true">
+          <file leaf-file-name="While.bnf" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/com/intellij/whileLang/While.bnf">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.6870229">
-                  <caret line="55" column="0" selection-start-line="55" selection-start-column="0" selection-end-line="55" selection-end-column="0" />
+                <state vertical-scroll-proportion="0.0">
+                  <caret line="87" column="27" selection-start-line="87" selection-start-column="27" selection-end-line="87" selection-end-column="27" />
                   <folding>
-                    <element signature="e#0#1074#0" expanded="true" />
+                    <element signature="e#0#1113#0" expanded="true" />
                   </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="PsiNotBexpr.java" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/gen/com/intellij/whileLang/psi/impl/PsiNotBexpr.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="0.12857144">
+                  <caret line="7" column="17" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="PsiParenBexpr.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/gen/com/intellij/whileLang/psi/impl/PsiParenBexpr.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="0.0">
+                  <caret line="7" column="17" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="PsiBinaryBexpr.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/gen/com/intellij/whileLang/psi/impl/PsiBinaryBexpr.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="0.0">
+                  <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
+                  <folding />
                 </state>
               </provider>
             </entry>
@@ -65,31 +135,11 @@
       </split-first>
       <split-second>
         <leaf>
-          <file leaf-file-name="While.bnf.preview" pinned="false" current-in-tab="false">
+          <file leaf-file-name="While.bnf.preview" pinned="false" current-in-tab="true">
             <entry file="mock:///While.bnf.preview">
               <provider selected="true" editor-type-id="text-editor">
                 <state vertical-scroll-proportion="0.0">
-                  <caret line="0" column="7" selection-start-line="0" selection-start-column="7" selection-end-line="0" selection-end-column="7" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="PsiWriteStmt.java" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/gen/com/intellij/whileLang/psi/impl/PsiWriteStmt.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0">
-                  <caret line="13" column="0" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="PsiReadStmt.java" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/gen/com/intellij/whileLang/psi/impl/PsiReadStmt.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.17142858">
-                  <caret line="7" column="17" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
+                  <caret line="0" column="13" selection-start-line="0" selection-start-column="13" selection-end-line="0" selection-end-column="13" />
                   <folding />
                 </state>
               </provider>
@@ -124,19 +174,24 @@
         <option value="/Test.bnf.preview" />
         <option value="$PROJECT_DIR$/src/com/intellij/whileLang/ParserClasses.kt" />
         <option value="$PROJECT_DIR$/src/com/intellij/whileLang/WhileLexer.flex" />
-        <option value="$PROJECT_DIR$/src/com/intellij/whileLang/WhileLanguage.kt" />
         <option value="$PROJECT_DIR$/src/com/intellij/whileLang/_WhileLexer.java" />
         <option value="$PROJECT_DIR$/gen/com/intellij/whileLang/psi/WhileTypes.java" />
         <option value="$PROJECT_DIR$/src/com/intellij/whileLang/_WhileLexer.flex" />
-        <option value="/While.bnf.preview" />
         <option value="$PROJECT_DIR$/whilePrinterXML/stmtList.xml" />
-        <option value="$PROJECT_DIR$/src/com/intellij/whileLang/While.bnf" />
         <option value="$PROJECT_DIR$/whilePrinterXML/skip.xml" />
         <option value="$PROJECT_DIR$/whilePrinterXML/while.xml" />
         <option value="$PROJECT_DIR$/whilePrinterXML/if.xml" />
-        <option value="$PROJECT_DIR$/whilePrinterXML/assignment.xml" />
         <option value="$PROJECT_DIR$/whilePrinterXML/write.xml" />
         <option value="$PROJECT_DIR$/whilePrinterXML/read.xml" />
+        <option value="/While.bnf.preview" />
+        <option value="$PROJECT_DIR$/whilePrinterXML/arbin.xml" />
+        <option value="$PROJECT_DIR$/whilePrinterXML/arparen.xml" />
+        <option value="$PROJECT_DIR$/src/com/intellij/whileLang/WhileLanguage.kt" />
+        <option value="$PROJECT_DIR$/src/com/intellij/whileLang/While.bnf" />
+        <option value="$PROJECT_DIR$/whilePrinterXML/blbin.xml" />
+        <option value="$PROJECT_DIR$/whilePrinterXML/blparen.xml" />
+        <option value="$PROJECT_DIR$/whilePrinterXML/assignment.xml" />
+        <option value="$PROJECT_DIR$/whilePrinterXML/not.xml" />
       </list>
     </option>
   </component>
@@ -151,7 +206,6 @@
     <order />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="960" />
     <option name="y" value="-17" />
     <option name="width" value="960" />
     <option name="height" value="1198" />
@@ -228,6 +282,10 @@
               <option name="myItemId" value="intellij" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="whileLang" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -239,7 +297,11 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="gen" />
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="intellij" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -266,7 +328,7 @@
     <property name="options.splitter.details.proportions" value="0.2" />
     <property name="dynamic.classpath" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/src/com/intellij/whileLang" />
-    <property name="SearchEverywhereHistoryKey" value="psiread&#9;PSI&#9;JAVA://com.intellij.whileLang.psi.impl.PsiReadStmt&#10;psiwr&#9;PSI&#9;JAVA://com.intellij.whileLang.psi.impl.PsiWriteStmt&#10;psistm&#9;PSI&#9;JAVA://com.intellij.whileLang.psi.impl.PsiStmtList&#10;psiif&#9;PSI&#9;JAVA://com.intellij.whileLang.psi.impl.PsiIfStmt&#10;whilestmt&#9;PSI&#9;JAVA://com.intellij.whileLang.psi.impl.PsiWhileStmt&#10;psijavafile&#9;PSI&#9;JAVA://com.intellij.psi.PsiJavaFile&#10;vim &#9;ACTION&#9;VimPluginToggle&#10;vim&#9;ACTION&#9;VimShortcutKeyAction&#10;psi&#9;FILE&#9;file:///home/user/IdeaProjects/whileLang/gen/com/intellij/whileLang/psi/impl/PsiBinaryBexpr.java&#10;class hierarchy&#9;ACTION&#9;TypeHierarchy.Class&#10;hierarchy&#9;ACTION&#9;TypeHierarchy.Class&#10;whileType&#9;FILE&#9;file:///home/user/IdeaProjects/whileLang/gen/com/intellij/whileLang/psi/WhileTypes.java" />
+    <property name="SearchEverywhereHistoryKey" value="not&#9;PSI&#9;JAVA://com.intellij.whileLang.psi.impl.PsiNotBexpr&#10;psiPare&#9;PSI&#9;JAVA://com.intellij.whileLang.psi.impl.PsiParenBexpr&#10;paren&#9;PSI&#9;JAVA://com.intellij.whileLang.psi.impl.PsiParenExpr&#10;psistmt&#9;PSI&#9;JAVA://com.intellij.whileLang.psi.impl.PsiStmtList&#10;Fa&#9;PSI&#9;JAVA://com.intellij.whileLang.psi.WhileTypes.Factory&#10;psiread&#9;PSI&#9;JAVA://com.intellij.whileLang.psi.impl.PsiReadStmt&#10;psiwr&#9;PSI&#9;JAVA://com.intellij.whileLang.psi.impl.PsiWriteStmt&#10;psistm&#9;PSI&#9;JAVA://com.intellij.whileLang.psi.impl.PsiStmtList&#10;psiif&#9;PSI&#9;JAVA://com.intellij.whileLang.psi.impl.PsiIfStmt&#10;whilestmt&#9;PSI&#9;JAVA://com.intellij.whileLang.psi.impl.PsiWhileStmt&#10;psijavafile&#9;PSI&#9;JAVA://com.intellij.psi.PsiJavaFile&#10;vim &#9;ACTION&#9;VimPluginToggle&#10;vim&#9;ACTION&#9;VimShortcutKeyAction&#10;psi&#9;FILE&#9;file:///home/user/IdeaProjects/whileLang/gen/com/intellij/whileLang/psi/impl/PsiBinaryBexpr.java&#10;class hierarchy&#9;ACTION&#9;TypeHierarchy.Class&#10;hierarchy&#9;ACTION&#9;TypeHierarchy.Class&#10;whileType&#9;FILE&#9;file:///home/user/IdeaProjects/whileLang/gen/com/intellij/whileLang/psi/WhileTypes.java" />
     <property name="restartRequiresConfirmation" value="true" />
   </component>
   <component name="RecentsManager">
@@ -480,7 +542,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="960" y="-17" width="960" height="1198" extended-state="0" />
+    <frame x="0" y="-17" width="960" height="1198" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -497,13 +559,13 @@
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32943293" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Cabal" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Kotlin Bytecode" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24843423" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24780059" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.29853863" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3308977" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24947807" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.66786677" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24973932" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -568,50 +630,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/com/intellij/whileLang/_WhileLexer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="661" column="11" selection-start-line="661" selection-start-column="11" selection-end-line="661" selection-end-column="11" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/intellij/whileLang/While.bnf">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#1074#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/intellij/whileLang/WhileLanguage.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="39" column="0" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/intellij/whileLang/ParserClasses.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="29" column="68" selection-start-line="29" selection-start-column="68" selection-end-line="29" selection-end-column="68" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/intellij/whileLang/While.bnf">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#1074#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/META-INF/plugin.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -633,7 +651,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="15" column="4" selection-start-line="15" selection-start-column="4" selection-end-line="15" selection-end-column="4" />
           <folding>
-            <element signature="e#0#1074#0" expanded="true" />
+            <element signature="e#0#1113#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -683,7 +701,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
           <folding>
-            <element signature="e#0#1074#0" expanded="true" />
+            <element signature="e#0#1113#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -731,7 +749,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="6" column="48" selection-start-line="6" selection-start-column="48" selection-end-line="6" selection-end-column="48" />
           <folding>
-            <element signature="e#0#1074#0" expanded="true" />
+            <element signature="e#0#1113#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -772,7 +790,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
           <folding>
-            <element signature="e#0#1074#0" expanded="true" />
+            <element signature="e#0#1113#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -845,14 +863,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/intellij/whileLang/WhileLanguage.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="73" column="0" selection-start-line="73" selection-start-column="0" selection-end-line="73" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/intellij/whileLang/_WhileLexer.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -877,84 +887,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/gen/com/intellij/whileLang/psi/impl/PsiIfStmt.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="16" column="8" selection-start-line="16" selection-start-column="8" selection-end-line="16" selection-end-column="8" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/gen/com/intellij/whileLang/psi/impl/PsiStmtList.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="13" column="0" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/gen/com/intellij/whileLang/psi/impl/PsiSkipStmt.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="7" column="17" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/gen/com/intellij/whileLang/psi/impl/PsiWriteStmt.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="13" column="0" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/gen/com/intellij/whileLang/psi/impl/PsiReadStmt.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.17142858">
-          <caret line="7" column="17" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/intellij/whileLang/While.bnf">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6870229">
-          <caret line="55" column="0" selection-start-line="55" selection-start-column="0" selection-end-line="55" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#1074#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/whilePrinterXML/read.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0703125">
-          <caret line="2" column="36" selection-start-line="2" selection-start-column="36" selection-end-line="2" selection-end-column="36" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/whilePrinterXML/write.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0703125">
           <caret line="2" column="38" selection-start-line="2" selection-start-column="38" selection-end-line="2" selection-end-column="38" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/whilePrinterXML/skip.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="24" selection-start-line="0" selection-start-column="24" selection-end-line="0" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/whilePrinterXML/stmtList.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="11" selection-start-line="0" selection-start-column="11" selection-end-line="0" selection-end-column="11" />
           <folding />
         </state>
       </provider>
@@ -975,10 +911,132 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/whilePrinterXML/skip.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="24" selection-start-line="0" selection-start-column="24" selection-end-line="0" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gen/generated/psi/impl/PsiBlOpImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.12857144">
+          <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gen/com/intellij/whileLang/psi/impl/PsiBlOp.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.12857144">
+          <caret line="7" column="20" selection-start-line="7" selection-start-column="20" selection-end-line="7" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/whilePrinterXML/blbin.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.08159565">
+          <caret line="5" column="45" selection-start-line="5" selection-start-column="45" selection-end-line="5" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/whilePrinterXML/stmtList.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gen/com/intellij/whileLang/psi/impl/PsiParenBexpr.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="7" column="17" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/whilePrinterXML/read.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.025714286">
+          <caret line="1" column="32" selection-start-line="1" selection-start-column="32" selection-end-line="1" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/intellij/whileLang/WhileLanguage.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.4342857">
+          <caret line="76" column="34" selection-start-line="76" selection-start-column="34" selection-end-line="76" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gen/com/intellij/whileLang/psi/impl/PsiBinaryBexpr.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/intellij/whileLang/While.bnf">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="87" column="27" selection-start-line="87" selection-start-column="27" selection-end-line="87" selection-end-column="27" />
+          <folding>
+            <element signature="e#0#1113#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/whilePrinterXML/arparen.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="3" column="11" selection-start-line="3" selection-start-column="11" selection-end-line="3" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/whilePrinterXML/arbin.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="1" column="70" selection-start-line="1" selection-start-column="70" selection-end-line="1" selection-end-column="70" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gen/com/intellij/whileLang/psi/impl/PsiNotBexpr.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.12857144">
+          <caret line="7" column="17" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/whilePrinterXML/blparen.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="1" column="29" selection-start-line="1" selection-start-column="29" selection-end-line="1" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/whilePrinterXML/assignment.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.17578125">
-          <caret line="5" column="11" selection-start-line="5" selection-start-column="11" selection-end-line="5" selection-end-column="11" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="68" selection-start-line="0" selection-start-column="68" selection-end-line="0" selection-end-column="68" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/whilePrinterXML/not.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.01631913">
+          <caret line="1" column="63" selection-start-line="1" selection-start-column="63" selection-end-line="1" selection-end-column="63" />
           <folding />
         </state>
       </provider>

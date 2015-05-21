@@ -74,7 +74,7 @@ public class WhileSyntaxHighlighter(): SyntaxHighlighterBase() {
     override public fun getTokenHighlights(tokenType: IElementType) =
             when (tokenType) {
                 WhileTypes.SEP    -> SEPARATOR_KEYS
-                WhileTypes.ASSIGN       -> SEPARATOR_KEYS
+                WhileTypes.ASSIGN -> SEPARATOR_KEYS
                 WhileTypes.DO, WhileTypes.OD, WhileTypes.WHILE,
                 WhileTypes.THEN, WhileTypes.ELSE, WhileTypes.IF, WhileTypes.FI,
                 WhileTypes.READ, WhileTypes.WRITE, WhileTypes.SKIP -> KEY_KEYS
