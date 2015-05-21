@@ -1,5 +1,6 @@
 package com.intellij.whileLang
 
+import com.intellij.extapi.psi.PsiFileBase
 import com.intellij.lang.Language
 import com.intellij.lexer.FlexAdapter
 import com.intellij.openapi.editor.DefaultLanguageHighlighterColors
@@ -11,9 +12,13 @@ import com.intellij.openapi.editor.markup.TextAttributes
 import com.intellij.openapi.fileTypes.*
 import com.intellij.openapi.project.Project
 import com.intellij.openapi.vfs.VirtualFile
+import com.intellij.psi.FileViewProvider
+import com.intellij.psi.PsiElementVisitor
+import com.intellij.psi.PsiFileFactory
 import com.intellij.psi.TokenType
 import com.intellij.psi.tree.IElementType
 import com.intellij.whileLang.psi.WhileTypes
+import com.intellij.whileLang.psi.impl.PsiStmtList
 import java.awt.*
 
 /**
@@ -21,6 +26,12 @@ import java.awt.*
  */
 public class WhileLanguage(): Language("While") {
     companion object { val INSTANCE = WhileLanguage() }
+}
+
+public class WhileFile(provider: FileViewProvider) : PsiFileBase(provider, WhileLanguage.INSTANCE) {
+    override fun getFileType(): FileType { return WhileFileType.INSTANCE }
+    override fun accept(visitor: PsiElementVisitor) { visitor.visitFile(this) }
+    public fun getStmtList() : PsiStmtList? = findChildByClass(javaClass<PsiStmtList>())
 }
 
 public class WhileIcons() {
@@ -89,4 +100,10 @@ public class WhileSyntaxHighlighter(): SyntaxHighlighterBase() {
 public class WhileSyntaxHighlighterFactory(): SyntaxHighlighterFactory() {
     override public fun getSyntaxHighlighter(project: Project, virtualFile: VirtualFile) =
             WhileSyntaxHighlighter()
+}
+
+public class WhileElementFactory(val project: Project) {
+    public fun createFileFromText(text: String): WhileFile {
+        return PsiFileFactory.getInstance(project).createFileFromText("tmp.l", WhileLanguage.INSTANCE, text) as WhileFile
+    }
 }
