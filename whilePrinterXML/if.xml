@@ -1,4 +1,4 @@
-<component name="IfStmt" psiComponentClass="PsiIfStmt" createFromText="Statement">
+<component name="IfStmt" psiComponentClass="PsiIfStmt" createFromText="IfStmt">
     <subtree name="then"        psiGetMethod="ThenBranch"
              isCodeBlock="false"     isRequired="true" />
     <subtree name="else_branch"        psiGetMethod="ElseBranch"

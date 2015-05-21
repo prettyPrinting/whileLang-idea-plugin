@@ -1,4 +1,4 @@
-<component name="BinaryExpr" psiComponentClass="PsiBinaryExpr" createFromText="Expression">
+<component name="BinaryExpr" psiComponentClass="PsiBinaryExpr" createFromText="BinaryExpr">
     <subtree name="leftOp" psiGetMethod="Left" isEverywhereSuit="true"
              isCodeBlock="false" isRequired="true" />
     <subtree name="rightOp" psiGetMethod="Right" isEverywhereSuit="true"

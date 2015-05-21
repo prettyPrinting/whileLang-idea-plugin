@@ -18,7 +18,7 @@ import com.intellij.psi.PsiFileFactory
 import com.intellij.psi.TokenType
 import com.intellij.psi.tree.IElementType
 import com.intellij.whileLang.psi.WhileTypes
-import com.intellij.whileLang.psi.impl.PsiStmtList
+import com.intellij.whileLang.psi.impl.*
 import java.awt.*
 
 /**
@@ -105,5 +105,19 @@ public class WhileSyntaxHighlighterFactory(): SyntaxHighlighterFactory() {
 public class WhileElementFactory(val project: Project) {
     public fun createFileFromText(text: String): WhileFile {
         return PsiFileFactory.getInstance(project).createFileFromText("tmp.l", WhileLanguage.INSTANCE, text) as WhileFile
+    }
+
+    public fun createStmtFromText(text: String): PsiStmt? {
+       return createFileFromText(text).getStmtList()?.getStmtList()?.get(0)
+    }
+    public fun createWriteStmtFromText(text: String): PsiWriteStmt? = createStmtFromText(text) as? PsiWriteStmt
+    public fun createReadStmtFromText(text: String): PsiReadStmt? = createStmtFromText(text) as? PsiReadStmt
+    public fun createAssignStmtFromText(text: String): PsiAssignStmt?  = createStmtFromText(text) as? PsiAssignStmt
+    public fun createIfStmtFromText(text: String): PsiIfStmt?  = createStmtFromText(text) as? PsiIfStmt
+    public fun createWhileStmtFromText(text: String): PsiWhileStmt?  = createStmtFromText(text) as? PsiWhileStmt
+    public fun createSkipStmtFromText(text: String): PsiSkipStmt?  = createStmtFromText(text) as? PsiSkipStmt
+
+    public fun createStmtListFromText(text: String): PsiStmtList?  {
+        return createFileFromText(text).getStmtList()
     }
 }
