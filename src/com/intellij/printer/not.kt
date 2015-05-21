@@ -5,6 +5,7 @@ import org.jetbrains.format.FormatSet
 import java.util.HashMap
 import java.util.HashSet
 import com.intellij.CommentConnectionUtils.VariantConstructionContext
+import com.intellij.whileLang.WhileElementFactory
 import com.intellij.whileLang.psi.impl.PsiNotBexpr
 
 
@@ -59,7 +60,7 @@ public class NotBexprComponent(
     
     override protected fun getNewElement(
             text: String
-            , elementFactory: PsiElementFactory
+            , elementFactory: WhileElementFactory
     ): PsiNotBexpr? {
         try {
             val newP = elementFactory.createBexpressionFromText(text, null)

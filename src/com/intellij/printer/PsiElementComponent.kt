@@ -37,6 +37,7 @@ import com.intellij.whileLang.Printer
 import org.jetbrains.format.util.toLines
 import org.jetbrains.format.FormatSet
 import com.intellij.CommentConnectionUtils.VariantConstructionContext
+import com.intellij.whileLang.WhileElementFactory
 
 /**
  * User: anlun
@@ -47,7 +48,7 @@ abstract public class PsiElementComponent<ET: PsiElement, IPT: SmartInsertPlace,
     open public fun getTmplt(p: ET): T? {
         val text = p.deleteSpaces(true) //deleting leading comments
 
-        val elementFactory = JavaPsiFacade.getElementFactory(printer.getProject())
+        val elementFactory = WhileElementFactory(printer.getProject())
         if (elementFactory == null) { return null }
         try {
             val newElement = getNewElement(text, elementFactory)
@@ -59,7 +60,7 @@ abstract public class PsiElementComponent<ET: PsiElement, IPT: SmartInsertPlace,
         } catch (e: ClassCastException) { return null }
     }
 
-    abstract protected fun getNewElement         (text: String, elementFactory: JavaPsiFacade.getElementFactory): ET?
+    abstract protected fun getNewElement         (text: String, elementFactory: WhileElementFactory): ET?
     abstract public    fun getTemplateFromElement(newP: ET): T?
 
     open public fun getAndSaveTemplate(newP: ET) {
