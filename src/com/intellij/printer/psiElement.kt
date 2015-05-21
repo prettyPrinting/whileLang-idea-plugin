@@ -1,9 +1,20 @@
 package com.intellij
 
 import com.intellij.openapi.util.TextRange
-import com.intellij.psi.*
+import com.intellij.psi.PsiElement
+import com.intellij.psi.PsiClass
+import com.intellij.psi.PsiMethod
+import com.intellij.psi.PsiModifierListOwner
+import com.intellij.psi.PsiWhiteSpace
+import com.intellij.psi.PsiComment
+
+import com.intellij.psi.PsiCodeBlock
+import com.intellij.psi.PsiBlockStatement
+import com.intellij.psi.PsiStatement
 import com.intellij.whileLang.Printer
 import org.jetbrains.format.FormatSet
+import java.util.ArrayList
+import java.util.LinkedList
 import com.intellij.CommentConnectionUtils.VariantConstructionContext
 
 /**
@@ -15,20 +26,20 @@ fun hasElement(p: PsiElement?): Boolean = (p?.getTextRange()?.getLength() ?: -1)
 fun List<PsiElement>.sortByOffset(): List<PsiElement> = sortBy { el -> el.getCorrectTextOffset() }
 
 fun Iterable<PsiElement>.getTextRange(): TextRange? =
-     fold(null: TextRange?) { range, elem ->
-        val elemRange = elem.getTextRange()
-        if (range != null && elemRange != null)
-            range.union(elemRange)
-        else elemRange
-     }
+        fold(null: TextRange?) { range, elem ->
+            val elemRange = elem.getTextRange()
+            if (range != null && elemRange != null)
+                range.union(elemRange)
+            else elemRange
+        }
 // Separate realization for arrays, because they don't implement Iterable interface
 fun Array<out PsiElement>.getTextRange(): TextRange? =
-     fold(null: TextRange?) { range, elem ->
-        val elemRange = elem.getTextRange()
-        if (range != null && elemRange != null)
-            range.union(elemRange)
-        else elemRange
-     }
+        fold(null: TextRange?) { range, elem ->
+            val elemRange = elem.getTextRange()
+            if (range != null && elemRange != null)
+                range.union(elemRange)
+            else elemRange
+        }
 
 fun PsiElement?.getVariants(printer: Printer, context: VariantConstructionContext): FormatSet =
         if (this != null)
@@ -40,12 +51,12 @@ fun PsiElement?.getNotNullTextRange(): TextRange = this?.getTextRange() ?: TextR
 /* ----------- */
 fun PsiElement.getCorrectTextOffset(): Int = getCorrectTextOffset(false)
 fun PsiElement.getCorrectTextOffset(withoutLeadingComments: Boolean): Int {
-    val children = getChildren()
+    val children = getAllChildren()
     if (children.isEmpty()) { return getTextOffset() }
 
     if (!withoutLeadingComments) { return children[0].getCorrectTextOffset() }
 
-    for (ch in getChildren()) {
+    for (ch in children) {
         if (ch is PsiWhiteSpace || ch is PsiComment) { continue }
         return ch.getCorrectTextOffset(withoutLeadingComments)
     }
@@ -93,15 +104,26 @@ fun PsiElement.getText(withoutLeadingComments: Boolean): String {
     return getText() ?: ""
 }
 
+fun PsiElement.getAllChildren() : List<PsiElement> {
+    val result = LinkedList<PsiElement>()
+    var child = getFirstChild()
+    while (child != null) {
+        result.add(child)
+        child = child.getNextSibling()
+    }
+    return result
+}
+
 fun PsiElement.getTextWithoutLeadingComments(): String {
-    for (ch in getChildren()) {
+    val children = getAllChildren()
+    for (ch in children) {
         if (ch is PsiWhiteSpace || ch is PsiComment) { continue }
 
         //ch isn't whitespace or comment
         val startOffset = ch.getTextOffset()
         return getContainingFile()?.getText()
-            ?.substring(startOffset, getTextRange()?.getEndOffset() ?: startOffset)
-        ?: ""
+                ?.substring(startOffset, getTextRange()?.getEndOffset() ?: startOffset)
+                ?: ""
     }
     return getText() ?: ""
 }
