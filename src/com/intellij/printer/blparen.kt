@@ -63,7 +63,7 @@ public class ParenBexprComponent(
             , elementFactory: WhileElementFactory
     ): PsiParenBexpr? {
         try {
-            val newP = elementFactory.createBexpressionFromText(text, null)
+            val newP = elementFactory.createParenBexprFromText(text)
             return newP as? PsiParenBexpr
         } catch (e: Exception) {
             return null

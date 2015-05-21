@@ -104,7 +104,7 @@ public class WhileStmtComponent(
             , elementFactory: WhileElementFactory
     ): PsiWhileStmt? {
         try {
-            val newP = elementFactory.createStatementFromText(text, null)
+            val newP = elementFactory.createWhileStmtFromText(text)
             return newP as? PsiWhileStmt
         } catch (e: Exception) {
             return null

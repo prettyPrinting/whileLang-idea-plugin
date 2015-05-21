@@ -63,7 +63,7 @@ public class NotBexprComponent(
             , elementFactory: WhileElementFactory
     ): PsiNotBexpr? {
         try {
-            val newP = elementFactory.createBexpressionFromText(text, null)
+            val newP = elementFactory.createNotBexprFromText(text)
             return newP as? PsiNotBexpr
         } catch (e: Exception) {
             return null

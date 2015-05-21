@@ -145,7 +145,7 @@ public class BinaryBexprComponent(
             , elementFactory: WhileElementFactory
     ): PsiBinaryBexpr? {
         try {
-            val newP = elementFactory.createBexpressionFromText(text, null)
+            val newP = elementFactory.createBinaryBexprFromText(text)
             return newP as? PsiBinaryBexpr
         } catch (e: Exception) {
             return null

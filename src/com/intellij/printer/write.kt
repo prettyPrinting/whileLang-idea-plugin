@@ -63,7 +63,7 @@ public class WriteStmtComponent(
             , elementFactory: WhileElementFactory
     ): PsiWriteStmt? {
         try {
-            val newP = elementFactory.createStatementFromText(text, null)
+            val newP = elementFactory.createWriteStmtFromText(text)
             return newP as? PsiWriteStmt
         } catch (e: Exception) {
             return null

@@ -63,7 +63,7 @@ public class ReadStmtComponent(
             , elementFactory: WhileElementFactory
     ): PsiReadStmt? {
         try {
-            val newP = elementFactory.createStatementFromText(text, null)
+            val newP = elementFactory.createReadStmtFromText(text)
             return newP as? PsiReadStmt
         } catch (e: Exception) {
             return null

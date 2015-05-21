@@ -22,7 +22,7 @@ public class SkipStmtComponent(
             , elementFactory: WhileElementFactory
     ): PsiSkipStmt? {
         try {
-            val newP = elementFactory.createStatementFromText(text, null)
+            val newP = elementFactory.createSkipStmtFromText(text)
             return newP as? PsiSkipStmt
         } catch (e: Exception) {
             return null

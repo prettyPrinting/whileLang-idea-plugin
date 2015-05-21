@@ -12,7 +12,7 @@ import com.intellij.whileLang.psi.impl.PsiIfStmt
 public class IfStmtComponent(
         printer: Printer
 ): PsiElementComponent<PsiIfStmt, SmartInsertPlace, PsiTemplateGen<PsiIfStmt, SmartInsertPlace>>(printer)
-
+   
 {
 
     final val THEN_TAG: String
@@ -21,7 +21,7 @@ public class IfStmtComponent(
         get() = "else_branch"
     final val CONDITION_TAG: String
         get() = "condition"
-
+    
     private fun addThenToInsertPlaceMap(
             p: PsiIfStmt
             , insertPlaceMap: MutableMap<String, SmartInsertPlace>
@@ -30,18 +30,18 @@ public class IfStmtComponent(
         val then = p.getThenBranch()
         val thenTextRange = then?.getTextRange()
         if (thenTextRange == null) { return false }
-
+        
         val text = p.getContainingFile()?.getText()
         if (text == null) { return false }
         val fillConstant = text.getFillConstant(thenTextRange)
-
+        
         insertPlaceMap.put(
-                THEN_TAG
-                , SmartInsertPlace(thenTextRange.shiftRight(delta), fillConstant, then!!.toBox())
-        )
+               THEN_TAG
+               , SmartInsertPlace(thenTextRange.shiftRight(delta), fillConstant, then!!.toBox())
+            )
         return true
     }
-
+    
     private fun prepareThenVariants(
             p: PsiIfStmt
             , variants: MutableMap<String, FormatSet>
@@ -51,7 +51,7 @@ public class IfStmtComponent(
         if (thenVariants.isEmpty()) { return }
         variants.put(THEN_TAG, thenVariants)
     }
-
+    
     private fun getThenVariants(
             p: PsiIfStmt
             , context: VariantConstructionContext
@@ -60,7 +60,7 @@ public class IfStmtComponent(
         if (then == null) { return printer.getEmptySet() }
         return printer.getVariants(then, context)
     }
-
+    
     private fun addElse_branchToInsertPlaceMap(
             p: PsiIfStmt
             , insertPlaceMap: MutableMap<String, SmartInsertPlace>
@@ -69,18 +69,18 @@ public class IfStmtComponent(
         val else_branch = p.getElseBranch()
         val else_branchTextRange = else_branch?.getTextRange()
         if (else_branchTextRange == null) { return false }
-
+        
         val text = p.getContainingFile()?.getText()
         if (text == null) { return false }
         val fillConstant = text.getFillConstant(else_branchTextRange)
-
+        
         insertPlaceMap.put(
-                ELSE_BRANCH_TAG
-                , SmartInsertPlace(else_branchTextRange.shiftRight(delta), fillConstant, else_branch!!.toBox())
-        )
+               ELSE_BRANCH_TAG
+               , SmartInsertPlace(else_branchTextRange.shiftRight(delta), fillConstant, else_branch!!.toBox())
+            )
         return true
     }
-
+    
     private fun prepareElse_branchVariants(
             p: PsiIfStmt
             , variants: MutableMap<String, FormatSet>
@@ -90,7 +90,7 @@ public class IfStmtComponent(
         if (else_branchVariants.isEmpty()) { return }
         variants.put(ELSE_BRANCH_TAG, else_branchVariants)
     }
-
+    
     private fun getElse_branchVariants(
             p: PsiIfStmt
             , context: VariantConstructionContext
@@ -99,7 +99,7 @@ public class IfStmtComponent(
         if (else_branch == null) { return printer.getEmptySet() }
         return printer.getVariants(else_branch, context)
     }
-
+    
     private fun addConditionToInsertPlaceMap(
             p: PsiIfStmt
             , insertPlaceMap: MutableMap<String, SmartInsertPlace>
@@ -108,18 +108,18 @@ public class IfStmtComponent(
         val condition = p.getBexpr()
         val conditionTextRange = condition?.getTextRange()
         if (conditionTextRange == null) { return false }
-
+        
         val text = p.getContainingFile()?.getText()
         if (text == null) { return false }
         val fillConstant = text.getFillConstant(conditionTextRange)
-
+        
         insertPlaceMap.put(
-                CONDITION_TAG
-                , SmartInsertPlace(conditionTextRange.shiftRight(delta), fillConstant, condition!!.toBox())
-        )
+               CONDITION_TAG
+               , SmartInsertPlace(conditionTextRange.shiftRight(delta), fillConstant, condition!!.toBox())
+            )
         return true
     }
-
+    
     private fun prepareConditionVariants(
             p: PsiIfStmt
             , variants: MutableMap<String, FormatSet>
@@ -129,7 +129,7 @@ public class IfStmtComponent(
         if (conditionVariants.isEmpty()) { return }
         variants.put(CONDITION_TAG, conditionVariants)
     }
-
+    
     private fun getConditionVariants(
             p: PsiIfStmt
             , context: VariantConstructionContext
@@ -138,14 +138,14 @@ public class IfStmtComponent(
         if (condition == null) { return printer.getEmptySet() }
         return printer.getVariants(condition, context)
     }
-
-
+    
+    
     override protected fun getNewElement(
             text: String
             , elementFactory: WhileElementFactory
     ): PsiIfStmt? {
         try {
-            val newP = elementFactory.createStatementFromText(text, null)
+            val newP = elementFactory.createIfStmtFromText(text)
             return newP as? PsiIfStmt
         } catch (e: Exception) {
             return null
@@ -166,25 +166,25 @@ public class IfStmtComponent(
             , context: VariantConstructionContext
     ): Map<String, FormatSet> {
         val variants = HashMap<String, FormatSet>()
-
+    
         prepareThenVariants(p, variants, context)
         prepareElse_branchVariants(p, variants, context)
         prepareConditionVariants(p, variants, context)
-
-
-
+        
+        
+    
         return variants
     }
 
     override protected fun getTags(p: PsiIfStmt): Set<String> {
         val set = HashSet<String>()
-
+    
         if (p.getThenBranch() != null) { set.add(THEN_TAG) }
         if (p.getElseBranch() != null) { set.add(ELSE_BRANCH_TAG) }
         if (p.getBexpr() != null) { set.add(CONDITION_TAG) }
-
-
-
+        
+        
+    
         return set
     }
 
@@ -198,18 +198,18 @@ public class IfStmtComponent(
     override public fun getTemplateFromElement(newP: PsiIfStmt): PsiTemplateGen<PsiIfStmt, SmartInsertPlace>? {
         val insertPlaceMap = HashMap<String, SmartInsertPlace>()
         val negShift = -newP.getCorrectTextOffset()
-
+    
         val text = newP.getText() ?: ""
-
+    
         if (!addThenToInsertPlaceMap(newP, insertPlaceMap, negShift)) { return null }
         addElse_branchToInsertPlaceMap(newP, insertPlaceMap, negShift)
         if (!addConditionToInsertPlaceMap(newP, insertPlaceMap, negShift)) { return null }
-
-
-
+        
+        
+    
         val contentRelation = getContentRelation(newP.getText() ?: "", insertPlaceMap)
         return PsiTemplateGen(newP, insertPlaceMap, contentRelation.first, contentRelation.second)
     }
 
-
+    
 }

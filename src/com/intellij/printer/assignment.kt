@@ -104,7 +104,7 @@ public class AssignStmtComponent(
             , elementFactory: WhileElementFactory
     ): PsiAssignStmt? {
         try {
-            val newP = elementFactory.createStatementFromText(text, null)
+            val newP = elementFactory.createAssignStmtFromText(text)
             return newP as? PsiAssignStmt
         } catch (e: Exception) {
             return null

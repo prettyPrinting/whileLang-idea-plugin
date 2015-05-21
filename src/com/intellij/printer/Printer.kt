@@ -24,9 +24,9 @@ import org.jetbrains.format.FormatList
 import org.jetbrains.likePrinter.printer.Memoization
 import org.jetbrains.likePrinter.printer.PrinterSettings
 import com.intellij.CommentConnectionUtils
+import com.intellij.CommentConnectionUtils.VariantConstructionContext
 import com.intellij.*
 import com.intellij.whileLang.psi.impl.*
-import com.intellij.CommentConnectionUtils.VariantConstructionContext
 
 
 class Printer(
@@ -78,7 +78,8 @@ class Printer(
     public val ParenExprComponent: ParenExprComponent = ParenExprComponent(this)
     public val BinaryBexprComponent: BinaryBexprComponent = BinaryBexprComponent(this)
     public val ParenBexprComponent: ParenBexprComponent = ParenBexprComponent(this)
-    public val NotBexpr: NotBexprComponent = NotBexprComponent(this)
+    public val NotBexprComponent: NotBexprComponent = NotBexprComponent(this)
+    public val RelBexprComponent: RelBexprComponent = RelBexprComponent(this)
     
     public val WhileFileComponent: WhileFileComponent = WhileFileComponent(this)
 
@@ -115,6 +116,7 @@ class Printer(
                 is PsiBinaryBexpr -> applyTmplt(p)
                 is PsiParenBexpr -> applyTmplt(p)
                 is PsiNotBexpr -> applyTmplt(p)
+                is PsiRelBexpr -> applyTmplt(p)
                 
                 else -> 5 + 5
             }
@@ -170,7 +172,8 @@ class Printer(
                 is PsiParenExpr -> ParenExprComponent.getVariants(p, context)
                 is PsiBinaryBexpr -> BinaryBexprComponent.getVariants(p, context)
                 is PsiParenBexpr -> ParenBexprComponent.getVariants(p, context)
-                is PsiNotBexpr -> NotBexpr.getVariants(p, context)
+                is PsiNotBexpr -> NotBexprComponent.getVariants(p, context)
+                is PsiRelBexpr -> RelBexprComponent.getVariants(p, context)
                 
                 is WhileFile                    ->                    WhileFileComponent.getVariants(p, context)
 
@@ -202,7 +205,8 @@ class Printer(
                 is PsiParenExpr -> ParenExprComponent.getAndSaveTemplate(p)
                 is PsiBinaryBexpr -> BinaryBexprComponent.getAndSaveTemplate(p)
                 is PsiParenBexpr -> ParenBexprComponent.getAndSaveTemplate(p)
-                is PsiNotBexpr -> NotBexpr.getAndSaveTemplate(p)
+                is PsiNotBexpr -> NotBexprComponent.getAndSaveTemplate(p)
+                is PsiRelBexpr -> RelBexprComponent.getAndSaveTemplate(p)
                 
                 else -> 5 + 5
             }
@@ -210,36 +214,24 @@ class Printer(
     }
 
     private fun createElementFromText(p: PsiElement, text: String): PsiElement? {
-        val factory = JavaPsiFacade.getElementFactory(getProject())
+        val factory = WhileElementFactory(getProject())
         if (factory == null) { return null }
 
         when (p) {
-            is PsiMethod       -> return factory.      createMethodFromText(text, null)
-            is PsiEnumConstant -> return factory.createEnumConstantFromText(text, null)
-            is PsiAnonymousClass -> {
-                val exp = factory.createExpressionFromText("new\n$text", null)
-                if (exp !is PsiNewExpression) { return null }
-                val newAnonymousClass = exp.getAnonymousClass()
-                return newAnonymousClass
-            }
-            is PsiClass -> {
-                val dummyClass = factory.createClassFromText(text, null)
-                val allInnerClasses = dummyClass.getAllInnerClasses()
-                val newClass = allInnerClasses[0]
-                return newClass
-            }
-            is PsiParameter  -> return factory. createParameterFromText(text, null)
-            is PsiAnnotation -> return factory.createAnnotationFromText(text, null)
-//            is PsiJavaCodeReferenceElement -> return factory?.createReferenceFromText(text, null)
-            is PsiField            -> return factory.        createFieldFromText(text, null)
-            is PsiTypeElement      -> return factory.  createTypeElementFromText(text, null)
-            is PsiCodeBlock        -> return factory.    createCodeBlockFromText(text, null)
-            is PsiResourceVariable -> return factory.     createResourceFromText(text, null)
-            is PsiTypeParameter    -> return factory.createTypeParameterFromText(text, null)
-
-
-            is PsiExpression -> return factory.createExpressionFromText(text, null)
-            else -> return factory.createStatementFromText(text, null)
+            is PsiAssignStmt -> return factory.createAssignStmtFromText(text)
+            is PsiIfStmt -> return factory.createIfStmtFromText(text)
+            is PsiReadStmt -> return factory.createReadStmtFromText(text)
+            is PsiSkipStmt -> return factory.createSkipStmtFromText(text)
+            is PsiWhileStmt -> return factory.createWhileStmtFromText(text)
+            is PsiStmtList -> return factory.createStmtListFromText(text)
+            is PsiWriteStmt -> return factory.createWriteStmtFromText(text)
+            is PsiBinaryExpr -> return factory.createBinaryExprFromText(text)
+            is PsiParenExpr -> return factory.createParenExprFromText(text)
+            is PsiBinaryBexpr -> return factory.createBinaryBexprFromText(text)
+            is PsiParenBexpr -> return factory.createParenBexprFromText(text)
+            is PsiNotBexpr -> return factory.createNotBexprFromText(text)
+            is PsiRelBexpr -> return factory.createRelBexprFromText(text)
+            else -> return null
         }
     }
 

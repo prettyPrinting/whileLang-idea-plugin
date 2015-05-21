@@ -6,12 +6,12 @@ import java.util.HashMap
 import java.util.HashSet
 import com.intellij.CommentConnectionUtils.VariantConstructionContext
 import com.intellij.whileLang.WhileElementFactory
-import com.intellij.whileLang.psi.impl.PsiBinaryExpr
+import com.intellij.whileLang.psi.impl.PsiRelBexpr
 
 
-public class BinaryExprComponent(
+public class RelBexprComponent(
         printer: Printer
-): PsiElementComponent<PsiBinaryExpr, SmartInsertPlace, PsiTemplateGen<PsiBinaryExpr, SmartInsertPlace>>(printer)
+): PsiElementComponent<PsiRelBexpr, SmartInsertPlace, PsiTemplateGen<PsiRelBexpr, SmartInsertPlace>>(printer)
    
 {
 
@@ -23,7 +23,7 @@ public class BinaryExprComponent(
         get() = "operation"
     
     private fun addLeftOpToInsertPlaceMap(
-            p: PsiBinaryExpr
+            p: PsiRelBexpr
             , insertPlaceMap: MutableMap<String, SmartInsertPlace>
             , delta: Int
     ): Boolean {
@@ -43,7 +43,7 @@ public class BinaryExprComponent(
     }
     
     private fun prepareLeftOpVariants(
-            p: PsiBinaryExpr
+            p: PsiRelBexpr
             , variants: MutableMap<String, FormatSet>
             , context: VariantConstructionContext
     ) {
@@ -53,7 +53,7 @@ public class BinaryExprComponent(
     }
     
     private fun getLeftOpVariants(
-            p: PsiBinaryExpr
+            p: PsiRelBexpr
             , context: VariantConstructionContext
     ): FormatSet {
         val leftOp = p.getLeft()
@@ -62,7 +62,7 @@ public class BinaryExprComponent(
     }
     
     private fun addRightOpToInsertPlaceMap(
-            p: PsiBinaryExpr
+            p: PsiRelBexpr
             , insertPlaceMap: MutableMap<String, SmartInsertPlace>
             , delta: Int
     ): Boolean {
@@ -82,7 +82,7 @@ public class BinaryExprComponent(
     }
     
     private fun prepareRightOpVariants(
-            p: PsiBinaryExpr
+            p: PsiRelBexpr
             , variants: MutableMap<String, FormatSet>
             , context: VariantConstructionContext
     ) {
@@ -92,7 +92,7 @@ public class BinaryExprComponent(
     }
     
     private fun getRightOpVariants(
-            p: PsiBinaryExpr
+            p: PsiRelBexpr
             , context: VariantConstructionContext
     ): FormatSet {
         val rightOp = p.getRight()
@@ -101,11 +101,11 @@ public class BinaryExprComponent(
     }
     
     private fun addOperationToInsertPlaceMap(
-            p: PsiBinaryExpr
+            p: PsiRelBexpr
             , insertPlaceMap: MutableMap<String, SmartInsertPlace>
             , delta: Int
     ): Boolean {
-        val operation = p.getArOp()
+        val operation = p.getRel()
         val operationTextRange = operation?.getTextRange()
         if (operationTextRange == null) { return false }
         
@@ -121,7 +121,7 @@ public class BinaryExprComponent(
     }
     
     private fun prepareOperationVariants(
-            p: PsiBinaryExpr
+            p: PsiRelBexpr
             , variants: MutableMap<String, FormatSet>
             , context: VariantConstructionContext
     ) {
@@ -131,10 +131,10 @@ public class BinaryExprComponent(
     }
     
     private fun getOperationVariants(
-            p: PsiBinaryExpr
+            p: PsiRelBexpr
             , context: VariantConstructionContext
     ): FormatSet {
-        val operation = p.getArOp()
+        val operation = p.getRel()
         if (operation == null) { return printer.getEmptySet() }
         return printer.getVariants(operation, context)
     }
@@ -143,18 +143,18 @@ public class BinaryExprComponent(
     override protected fun getNewElement(
             text: String
             , elementFactory: WhileElementFactory
-    ): PsiBinaryExpr? {
+    ): PsiRelBexpr? {
         try {
-            val newP = elementFactory.createBinaryExprFromText(text)
-            return newP as? PsiBinaryExpr
+            val newP = elementFactory.createRelBexprFromText(text)
+            return newP as? PsiRelBexpr
         } catch (e: Exception) {
             return null
         }
     }
 
     override protected fun updateSubtreeVariants(
-            p       : PsiBinaryExpr
-            , tmplt   : PsiTemplateGen<PsiBinaryExpr, SmartInsertPlace>
+            p       : PsiRelBexpr
+            , tmplt   : PsiTemplateGen<PsiRelBexpr, SmartInsertPlace>
             , variants: Map<String, FormatSet>
             , context: VariantConstructionContext
     ): Map<String, FormatSet> {
@@ -162,7 +162,7 @@ public class BinaryExprComponent(
     }
 
     override protected fun prepareSubtreeVariants(
-            p: PsiBinaryExpr
+            p: PsiRelBexpr
             , context: VariantConstructionContext
     ): Map<String, FormatSet> {
         val variants = HashMap<String, FormatSet>()
@@ -176,12 +176,12 @@ public class BinaryExprComponent(
         return variants
     }
 
-    override protected fun getTags(p: PsiBinaryExpr): Set<String> {
+    override protected fun getTags(p: PsiRelBexpr): Set<String> {
         val set = HashSet<String>()
     
         if (p.getLeft() != null) { set.add(LEFTOP_TAG) }
         if (p.getRight() != null) { set.add(RIGHTOP_TAG) }
-        if (p.getArOp() != null) { set.add(OPERATION_TAG) }
+        if (p.getRel() != null) { set.add(OPERATION_TAG) }
         
         
     
@@ -189,13 +189,13 @@ public class BinaryExprComponent(
     }
 
     override protected fun isTemplateSuitable(
-            p: PsiBinaryExpr
-            , tmplt: PsiTemplateGen<PsiBinaryExpr, SmartInsertPlace>
+            p: PsiRelBexpr
+            , tmplt: PsiTemplateGen<PsiRelBexpr, SmartInsertPlace>
     ): Boolean {
         return true
     }
 
-    override public fun getTemplateFromElement(newP: PsiBinaryExpr): PsiTemplateGen<PsiBinaryExpr, SmartInsertPlace>? {
+    override public fun getTemplateFromElement(newP: PsiRelBexpr): PsiTemplateGen<PsiRelBexpr, SmartInsertPlace>? {
         val insertPlaceMap = HashMap<String, SmartInsertPlace>()
         val negShift = -newP.getCorrectTextOffset()
     

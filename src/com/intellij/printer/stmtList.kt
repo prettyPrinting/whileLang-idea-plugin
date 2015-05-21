@@ -66,7 +66,7 @@ public class StmtListComponent(
             , elementFactory: WhileElementFactory
     ): PsiStmtList? {
         try {
-            val newP = elementFactory.createStatementListFromText(text, null)
+            val newP = elementFactory.createStmtListFromText(text)
             return newP as? PsiStmtList
         } catch (e: Exception) {
             return null
