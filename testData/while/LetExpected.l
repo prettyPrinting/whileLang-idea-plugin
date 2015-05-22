@@ -1,4 +1,4 @@
-while (5 > 5 ) do
+while (5 > 5) do
   skip;
   if (x = 6)
   then x := 5;

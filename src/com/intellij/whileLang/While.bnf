@@ -7,8 +7,8 @@
     psiPackage="com.intellij.whileLang.psi.impl"
 
     elementTypeHolderClass="com.intellij.whileLang.psi.WhileTypes"
-    elementTypeClass="com.intellij.whileLang.psi.WhileElementType"
-    tokenTypeClass="com.intellij.whileLang.psi.WhileTokenType"
+    elementTypeClass="com.intellij.whileLang.WhileElementType"
+    tokenTypeClass="com.intellij.whileLang.WhileTokenType"
 
     tokens=[
       space='regexp:\s+'

@@ -58,53 +58,6 @@ public class WhileFileTypeFactory(): FileTypeFactory() {
     }
 }
 
-public class WhileSyntaxHighlighter(): SyntaxHighlighterBase() {
-    companion object {
-        private fun createTextAKey(s: String, t: TextAttributesKey) =
-                TextAttributesKey.createTextAttributesKey(s, t)
-
-        public val SEPARATOR: TextAttributesKey =
-                createTextAKey("WHILE_SEPARATOR", DefaultLanguageHighlighterColors.OPERATION_SIGN)
-        public val KEY      : TextAttributesKey =
-                createTextAKey("WHILE_KEY", DefaultLanguageHighlighterColors.KEYWORD)
-        public val VALUE    : TextAttributesKey =
-                createTextAKey("WHILE_VALUE", DefaultLanguageHighlighterColors.STRING)
-        public val COMMENT  : TextAttributesKey =
-                createTextAKey("WHILE_COMMENT", DefaultLanguageHighlighterColors.LINE_COMMENT)
-
-        public val BAD_CHARACTER: TextAttributesKey =
-                TextAttributesKey.createTextAttributesKey("WHILE_BAD_CHARACTER",
-                        TextAttributes(Color.RED, null, null, null, Font.BOLD))
-
-        private val BAD_CHAR_KEYS : Array<TextAttributesKey> = array(BAD_CHARACTER)
-        private val SEPARATOR_KEYS: Array<TextAttributesKey> = array(SEPARATOR)
-        private val KEY_KEYS      : Array<TextAttributesKey> = array(KEY)
-        private val VALUE_KEYS    : Array<TextAttributesKey> = array(VALUE)
-        private val COMMENT_KEYS  : Array<TextAttributesKey> = array(COMMENT)
-        private val EMPTY_KEYS    : Array<TextAttributesKey> = array()
-    }
-
-    override public fun getHighlightingLexer() = FlexAdapter(_WhileLexer(null))
-    override public fun getTokenHighlights(tokenType: IElementType) =
-            when (tokenType) {
-                WhileTypes.SEP    -> SEPARATOR_KEYS
-                WhileTypes.ASSIGN -> SEPARATOR_KEYS
-                WhileTypes.DO, WhileTypes.OD, WhileTypes.WHILE,
-                WhileTypes.THEN, WhileTypes.ELSE, WhileTypes.IF, WhileTypes.FI,
-                WhileTypes.READ, WhileTypes.WRITE, WhileTypes.SKIP -> KEY_KEYS
-                WhileTypes.NUMBER, WhileTypes.TRUE,
-                WhileTypes.FALSE        -> VALUE_KEYS
-                WhileTypes.COMMENT      -> COMMENT_KEYS
-                TokenType.BAD_CHARACTER -> BAD_CHAR_KEYS
-                else -> EMPTY_KEYS
-            }
-}
-
-public class WhileSyntaxHighlighterFactory(): SyntaxHighlighterFactory() {
-    override public fun getSyntaxHighlighter(project: Project, virtualFile: VirtualFile) =
-            WhileSyntaxHighlighter()
-}
-
 public class WhileElementFactory(val project: Project) {
     public fun createFileFromText(text: String): com.intellij.whileLang.WhileFile {
         return PsiFileFactory.getInstance(project).createFileFromText("tmp.l", WhileLanguage.INSTANCE, text) as com.intellij.whileLang.WhileFile
