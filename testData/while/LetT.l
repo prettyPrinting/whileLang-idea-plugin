@@ -1,7 +1,9 @@
-while (5 > 5) do
+while (7 = 6) do
   skip;
-  if (x = 6)
-  then x := 5;
-  else y := 8;
-  fi
+  skip;
 od
+if (5 > 5)
+then skip;
+else skip;
+fi
+a := 6;

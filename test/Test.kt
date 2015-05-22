@@ -26,26 +26,19 @@ public class ExpressionTests : ComponentTest() {
         val templateFileContent = File(templateFileName).readText()
 
         val project = getProject()
-        if (project == null) { throw NullPointerException() }
+        if (project == null) {
+            throw NullPointerException()
+        }
 
-        val haskellElementFactory = WhileElementFactory(project)
-
-        //val tmpltStatement = HaskellElementFactory!!.createExpressionFromText(project, templateFileContent)
-
+        val whileElementFactory = WhileElementFactory(project)
         val toReprintFileName = getOurPathToComponents() + toReprintFileName
         val toReprintFileContent = File(toReprintFileName).readText().trim()
+
+        val tmpltFile = whileElementFactory.createFileFromText(templateFileContent)
+        val printer = Printer.create(tmpltFile, project, MAX_WIDTH)
+
         val stmtToReprint =
-                haskellElementFactory.createFileFromText(toReprintFileContent)
-
-        //        val haskFile = PsiFileFactory.getInstance(project).createFileFromText("tmp.hs", HaskellLanguage.INSTANCE, templateFileContent) as HaskellFile
-        //        val module = haskFile.getChildren().firstOrNull()!! as Module
-        //        val signDecl = (module.getSignatureDeclarationsList() as Iterable<SignatureDeclaration>).firstOrNull() as? SignatureDeclaration
-        //        val type = signDecl?.getType()
-        //        val signExpr = signDecl?.getQNameExpression()
-
-
-        val printer = Printer.create(haskellElementFactory.createFileFromText(templateFileContent), project, MAX_WIDTH)
-
+                whileElementFactory.createFileFromText(toReprintFileContent)
         val variants = printer.getVariants(stmtToReprint)
 
         assertEquals(1, variants.size(), "More then one variant!")
@@ -63,13 +56,4 @@ public class ExpressionTests : ComponentTest() {
     }
 
     Test fun testLet() { testBody("LetT.l", "LetEx.l", "LetExpected.l") }
-    /*
-    Test fun testLet() { testBody("LetT.hs", "LetEx.hs", "LetExpected.hs") }
-    Test fun testModule() { testBody("ModuleT.hs", "ModuleEx.hs", "ModuleExpected.hs") }
-    Test fun testWhere() { testBody("WhereT.hs", "WhereEx.hs", "WhereExpected.hs") }
-    Test fun testSignatureDecl() { testBody("SignatureDeclT.hs", "SignatureDeclEx.hs", "SignatureDeclExpected.hs") }
-    Test fun testTypeSyn() { testBody("TypeSynT.hs", "TypeSynEx.hs", "TypeSynExpected.hs") }
-    Test fun testData() { testBody("DataT.hs", "DataEx.hs", "DataExpected.hs") }
-    Test fun testGuard() { testBody("GuardT.hs", "GuardEx.hs", "GuardExpected.hs") }
-    */
 }
