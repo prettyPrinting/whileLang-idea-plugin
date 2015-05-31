@@ -21,7 +21,6 @@
 
       SKIP="skip"
       number="regexp:\d+(\.\d*)?"
-      op_1='+'; op_2='-'
 
       NOT="not";OR="or";AND="and";TRUE="true";FALSE="false"
 
@@ -67,7 +66,7 @@ left plus_expr ::= plus_op factor
 plus_op ::= '+'|'-'
 private factor ::= primary mul_expr *
 left mul_expr  ::= mul_op primary
-mul_op ::= '*'|'/'
+mul_op ::= '*'|'/'|'%'
 private primary ::= literal_expr | ref_expr | paren_expr
 paren_expr ::= '(' expr ')' {pin=1}
 ref_expr ::= id
