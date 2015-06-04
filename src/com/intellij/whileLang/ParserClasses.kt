@@ -22,9 +22,6 @@ import java.awt.Color
 import java.awt.Font
 import java.io.Reader
 
-/**
- * Created by me on 5/14/15.
- */
 public class WhileLexerAdapter(): FlexAdapter(_WhileLexer(null)) {}
 
 public class WhileParserDefinition(): ParserDefinition {
@@ -65,12 +62,12 @@ public class WhileSyntaxHighlighter(): SyntaxHighlighterBase() {
                 TextAttributesKey.createTextAttributesKey("WHILE_BAD_CHARACTER",
                         TextAttributes(Color.RED, null, null, null, Font.BOLD))
 
-        private val BAD_CHAR_KEYS : Array<TextAttributesKey> = array(BAD_CHARACTER)
-        private val SEPARATOR_KEYS: Array<TextAttributesKey> = array(SEPARATOR)
-        private val KEY_KEYS      : Array<TextAttributesKey> = array(KEY)
-        private val VALUE_KEYS    : Array<TextAttributesKey> = array(VALUE)
-        private val COMMENT_KEYS  : Array<TextAttributesKey> = array(COMMENT)
-        private val EMPTY_KEYS    : Array<TextAttributesKey> = array()
+        private val BAD_CHAR_KEYS : Array<TextAttributesKey> = arrayOf(BAD_CHARACTER)
+        private val SEPARATOR_KEYS: Array<TextAttributesKey> = arrayOf(SEPARATOR)
+        private val KEY_KEYS      : Array<TextAttributesKey> = arrayOf(KEY)
+        private val VALUE_KEYS    : Array<TextAttributesKey> = arrayOf(VALUE)
+        private val COMMENT_KEYS  : Array<TextAttributesKey> = arrayOf(COMMENT)
+        private val EMPTY_KEYS    : Array<TextAttributesKey> = arrayOf()
     }
 
     override public fun getHighlightingLexer() = FlexAdapter(_WhileLexer(null))

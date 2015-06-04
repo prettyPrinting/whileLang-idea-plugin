@@ -22,9 +22,6 @@ import com.intellij.whileLang.psi.impl.*
 import java.awt.*
 import com.intellij.whileLang.*
 
-/**
- * User: anlun
- */
 public class WhileLanguage(): Language("While") {
     companion object { val INSTANCE = WhileLanguage() }
 }
