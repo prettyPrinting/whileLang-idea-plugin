@@ -1,4 +1,4 @@
-proc sum ()
+proc sum (a; b)
     if (a > b)
     then a := b;
     else b := a;

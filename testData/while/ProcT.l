@@ -1,4 +1,4 @@
-proc abc ()
+proc abc (a; b)
     skip;
     skip;
 endp
