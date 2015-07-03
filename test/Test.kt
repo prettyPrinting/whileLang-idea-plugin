@@ -56,4 +56,6 @@ public class ExpressionTests : ComponentTest() {
     }
 
     Test fun testLet() { testBody("LetT.l", "LetEx.l", "LetExpected.l") }
+    Test fun testProc() { testBody("ProcT.l", "ProcEx.l", "ProcExpected.l") }
+    Test fun testProc1() { testBody("ProcT1.l", "ProcEx1.l", "ProcExpected1.l") }
 }
