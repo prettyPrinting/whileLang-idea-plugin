@@ -32,8 +32,33 @@ public class WhileFileComponent(
         return printer.getVariants(module, context)
     }
 
+    private fun getProcListVariants(
+            p: WhileFile
+            , context: VariantConstructionContext
+    ): FormatSet {
+        val proc = p.getProcList()
+        if (proc == null) { return printer.getEmptySet() }
+        return  printer.getVariants(proc, context)
+    }
+
     override public fun getVariants(p: WhileFile, context: VariantConstructionContext): FormatSet {
-        return getModuleVariants(p, context)
+        val list = ArrayList<FormatSet>()
+
+        val procListVariants = getProcListVariants(p, context)
+        if (procListVariants != null) {
+            if (procListVariants.isEmpty()) { return printer.getEmptySet() }
+            list.add(procListVariants)
+        }
+
+        val moduleVariants = getModuleVariants(p, context)
+        if (moduleVariants != null) {
+            if (moduleVariants.isEmpty()) { return printer.getEmptySet() }
+            list.add(moduleVariants)
+        }
+
+        val firstElem = list.get(0)
+
+        return list.drop(1).fold(firstElem) { r, e -> r % e }
     }
 
     override public fun getTmplt(p: WhileFile): PsiTemplateGen<WhileFile, SmartInsertPlace>? {

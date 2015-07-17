@@ -77,7 +77,8 @@ public class WhileSyntaxHighlighter(): SyntaxHighlighterBase() {
                 WhileTypes.ASSIGN -> SEPARATOR_KEYS
                 WhileTypes.DO, WhileTypes.OD, WhileTypes.WHILE,
                 WhileTypes.THEN, WhileTypes.ELSE, WhileTypes.IF, WhileTypes.FI,
-                WhileTypes.READ, WhileTypes.WRITE, WhileTypes.SKIP -> KEY_KEYS
+                WhileTypes.READ, WhileTypes.WRITE, WhileTypes.SKIP,
+                WhileTypes.PROC, WhileTypes.ENDP -> KEY_KEYS
                 WhileTypes.NUMBER, WhileTypes.TRUE,
                 WhileTypes.FALSE        -> VALUE_KEYS
                 WhileTypes.COMMENT      -> COMMENT_KEYS
