@@ -132,10 +132,7 @@ class Printer(
         val pCommentContext = getCommentContext(p)
         val widthToSuit = context.widthToSuit
         val variantConstructionContext = VariantConstructionContext(pCommentContext, widthToSuit)
-        if (p is PsiProcedure || p is PsiProcList) {
-            val t1 = 2
-            val t2 = 1
-        }
+
         val mv = getMemoizedVariants(p)
         if (mv != null) { return surroundVariantsByAttachedComments(p, mv, context) }
 
