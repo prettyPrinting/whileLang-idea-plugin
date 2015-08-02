@@ -30,6 +30,7 @@ public class WhileFile(provider: FileViewProvider) : PsiFileBase(provider, While
     override fun getFileType(): FileType { return WhileFileType.INSTANCE }
     override fun accept(visitor: PsiElementVisitor) { visitor.visitFile(this) }
     public fun getStmtList() : PsiStmtList? = findChildByClass(javaClass<PsiStmtList>())
+    public fun getProcList() : PsiProcList? = findChildByClass(javaClass<PsiProcList>())
     override public fun toString() = "While File"
     override public fun getIcon(flags: Int) = super.getIcon(flags)
 }
@@ -59,6 +60,9 @@ public class WhileElementFactory(val project: Project) {
     public fun createFileFromText(text: String): com.intellij.whileLang.WhileFile {
         return PsiFileFactory.getInstance(project).createFileFromText("tmp.l", WhileLanguage.INSTANCE, text) as com.intellij.whileLang.WhileFile
     }
+    public fun createProcedureFromText(text: String): PsiProcedure? {
+        return createFileFromText(text).getProcList()?.getProcedureList()?.get(0)
+    }
 
     public fun createStmtFromText(text: String): PsiStmt? {
        return createFileFromText(text).getStmtList()?.getStmtList()?.get(0)
@@ -72,6 +76,9 @@ public class WhileElementFactory(val project: Project) {
 
     public fun createStmtListFromText(text: String): PsiStmtList?  {
         return createFileFromText(text).getStmtList()
+    }
+    public fun createProcListFromText(text: String): PsiProcList? {
+        return createFileFromText(text).getProcList()
     }
 
     public fun createExprFromText(text: String): PsiExpr? {

@@ -81,6 +81,8 @@ class Printer(
     public val ParenBexprComponent: ParenBexprComponent = ParenBexprComponent(this)
     public val NotBexprComponent: NotBexprComponent = NotBexprComponent(this)
     public val RelBexprComponent: RelBexprComponent = RelBexprComponent(this)
+    public val ProcedureComponent: ProcedureComponent = ProcedureComponent(this)
+    public val ProcListComponent: ProcListComponent = ProcListComponent(this)
     
     public val WhileFileComponent: WhileFileComponent = WhileFileComponent(this)
 
@@ -118,6 +120,8 @@ class Printer(
                 is PsiParenBexpr -> applyTmplt(p)
                 is PsiNotBexpr -> applyTmplt(p)
                 is PsiRelBexpr -> applyTmplt(p)
+                is PsiProcedure -> applyTmplt(p)
+                is PsiProcList -> applyTmplt(p)
                 
                 else -> 5 + 5
             }
@@ -175,6 +179,8 @@ class Printer(
                 is PsiParenBexpr -> ParenBexprComponent.getVariants(p, context)
                 is PsiNotBexpr -> NotBexprComponent.getVariants(p, context)
                 is PsiRelBexpr -> RelBexprComponent.getVariants(p, context)
+                is PsiProcedure -> ProcedureComponent.getVariants(p, context)
+                is PsiProcList -> ProcListComponent.getVariants(p, context)
                 
                 is WhileFile                    ->                    WhileFileComponent.getVariants(p, context)
 
@@ -208,6 +214,8 @@ class Printer(
                 is PsiParenBexpr -> ParenBexprComponent.getAndSaveTemplate(p)
                 is PsiNotBexpr -> NotBexprComponent.getAndSaveTemplate(p)
                 is PsiRelBexpr -> RelBexprComponent.getAndSaveTemplate(p)
+                is PsiProcedure -> ProcedureComponent.getAndSaveTemplate(p)
+                is PsiProcList -> ProcListComponent.getAndSaveTemplate(p)
                 
                 else -> 5 + 5
             }
@@ -232,6 +240,8 @@ class Printer(
             is PsiParenBexpr -> return factory.createParenBexprFromText(text)
             is PsiNotBexpr -> return factory.createNotBexprFromText(text)
             is PsiRelBexpr -> return factory.createRelBexprFromText(text)
+            is PsiProcedure -> return factory.createProcedureFromText(text)
+            is PsiProcList -> return factory.createProcListFromText(text)
             else -> return null
         }
     }
