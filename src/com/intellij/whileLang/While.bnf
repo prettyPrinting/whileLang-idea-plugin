@@ -11,10 +11,8 @@
     tokenTypeClass="com.intellij.whileLang.WhileTokenType"
 
     tokens=[
-      space='regexp:\s+'
-
       CRLF='regexp:(\r\n|\n)'
-      SEP=';'
+      SEP=';' COMMA=','
       WRITE="write"; READ="read"
       WHILE="while"; DO="do"; OD="od"
       IF="if"; FI="fi"; THEN="then"; ELSE="else"
@@ -55,7 +53,7 @@ if_stmt     ::= IF '(' bexpr ')' THEN stmt_list (ELSE stmt_list)? FI {
 }
 while_stmt  ::= WHILE '(' bexpr ')' DO stmt_list OD
 procedure   ::= PROC id '(' param_list ')' stmt_list ENDP
-param_list  ::= (ref_expr SEP)* ref_expr?
+param_list  ::= ref_expr? (COMMA ref_expr)*
 
 fake ar_op ::= plus_op|mul_op
 fake binary_expr ::= expr ar_op expr {
