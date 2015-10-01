@@ -24,7 +24,7 @@ class WhilePrinter(
 , private val settings: PrinterSettings
 ): Printer(settings) {
     companion object {
-        public fun create(templateFile: WhileFile, project: Project, width: Int): WhilePrinter =
+        public fun create(templateFile: PsiFile?, project: Project, width: Int): WhilePrinter =
                 WhilePrinter(templateFile, PrinterSettings.createProjectSettings(width, project))
     }
 
@@ -47,8 +47,6 @@ class WhilePrinter(
     public val ProcListComponent: ProcListComponent = ProcListComponent(this)
     
     public val WhileFileComponent: WhileFileComponent = WhileFileComponent(this)
-
-    public fun reprint(mFile: WhileFile) { reprintElementWithChildren(mFile) }
 
     init {
         if (templateFile != null) {
@@ -175,7 +173,7 @@ class WhilePrinter(
         val startLineOffset = p.getOffsetInStartLine()
         val newElementText = chosenFormat.toText(startLineOffset, "")
 
-        if (p is WhileFile) {
+        if (p is PsiFile) {
             val document = PsiDocumentManager.getInstance(getProject())?.getDocument(p)
             val oldDocSize = document?.getText()?.size
             if (document == null || oldDocSize == null) { return }

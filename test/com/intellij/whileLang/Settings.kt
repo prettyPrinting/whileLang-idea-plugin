@@ -12,7 +12,7 @@ import kotlin.test.assertEquals
 /**
  * User: anlun
  */
-val PATH_TO_COMPONENTS: String = "testData/"
+val PATH_TO_COMPONENTS: String = "testData${File.separator}"
 val MAX_WIDTH: Int = 40
 
 abstract class ComponentTest(): LightCodeInsightFixtureTestCase() {

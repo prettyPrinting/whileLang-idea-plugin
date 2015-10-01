@@ -10,7 +10,7 @@ import kotlin.test.assertEquals
  * User: anlun
  */
 public class ExpressionTests : ComponentTest() {
-    override fun getOurPathToComponents(): String = PATH_TO_COMPONENTS + "while/"
+    override fun getOurPathToComponents(): String = PATH_TO_COMPONENTS + "while${File.separator}"
 
     fun getTestStatement(
             templateFileName: String
