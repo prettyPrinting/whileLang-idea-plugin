@@ -1,24 +1,19 @@
 package com.intellij.whileLang.components
 
-import com.intellij.openapi.util.TextRange
-import com.intellij.psi.JavaPsiFacade
 import com.intellij.psi.PsiComment
 import com.intellij.psi.PsiElement
-import com.intellij.psi.PsiMethod
 import org.jetbrains.format.Format
 import org.jetbrains.format.FormatSet
 import org.jetbrains.prettyPrinter.core.printer.CommentConnectionUtils.VariantConstructionContext
 import org.jetbrains.prettyPrinter.core.templateBase.PsiElementComponent
 import org.jetbrains.prettyPrinter.core.templateBase.template.PsiTemplateGen
 import org.jetbrains.prettyPrinter.core.templateBase.template.SmartInsertPlace
-import org.jetbrains.prettyPrinter.core.templateBase.template.Template
 import org.jetbrains.prettyPrinter.core.util.box.Box
 import org.jetbrains.prettyPrinter.core.util.psiElement.getCorrectTextOffset
-import org.jetbrains.prettyPrinter.core.util.psiElement.getFillConstant
 import org.jetbrains.prettyPrinter.core.util.psiElement.getNotNullTextRange
-import org.jetbrains.prettyPrinter.core.util.psiElement.getOffsetInStartLine
-import org.jetbrains.prettyPrinter.core.util.string.*
-import java.util.ArrayList
+import org.jetbrains.prettyPrinter.core.util.string.LineEquation
+import org.jetbrains.prettyPrinter.core.util.string.TagPlaceLine
+import org.jetbrains.prettyPrinter.core.util.string.getFillConstant
 import java.util.HashMap
 
 /**
@@ -137,6 +132,7 @@ public interface ListComponent<ET: PsiElement>: PsiElementComponent<ET, SmartIns
                     p: ET
             , context: VariantConstructionContext
     ): FormatSet = getElementsVariants(p, context, getSeparator_1())
+
     open public fun getSeparator_1(): Format = Format.line(", ")
 
     protected fun getElementsVariants(
