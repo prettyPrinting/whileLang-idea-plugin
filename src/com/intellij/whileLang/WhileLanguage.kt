@@ -90,4 +90,8 @@ public class WhileElementFactory(val project: Project) {
     public fun createNotBexprFromText(text: String): PsiNotBexpr? = createBexprFromText(text) as? PsiNotBexpr
     public fun createBinaryBexprFromText(text: String): PsiBinaryBexpr? = createBexprFromText(text) as? PsiBinaryBexpr
     public fun createRelBexprFromText(text: String): PsiRelBexpr? = createBexprFromText(text) as? PsiRelBexpr
+
+    public fun createParamListFromText(text: String): PsiParamList? {
+        return createProcedureFromText("proc main($text) skip; endp")?.getParamList() as? PsiParamList
+    }
 }

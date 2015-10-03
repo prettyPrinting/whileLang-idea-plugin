@@ -45,7 +45,8 @@ class WhilePrinter(
     public val RelBexprComponent: RelBexprComponent = RelBexprComponent(this)
     public val ProcedureComponent: ProcedureComponent = ProcedureComponent(this)
     public val ProcListComponent: ProcListComponent = ProcListComponent(this)
-    
+    public val ParamListComponent: ParamListComponent = ParamListComponent(this)
+
     public val WhileFileComponent: WhileFileComponent = WhileFileComponent(this)
 
     init {
@@ -72,6 +73,7 @@ class WhilePrinter(
                 is PsiRelBexpr -> applyTmplt(p)
                 is PsiProcedure -> applyTmplt(p)
                 is PsiProcList -> applyTmplt(p)
+                is PsiParamList -> applyTmplt(p)
                 
                 else -> 5 + 5
             }
@@ -96,6 +98,7 @@ class WhilePrinter(
                 is PsiRelBexpr -> RelBexprComponent.getVariants(p, context)
                 is PsiProcedure -> ProcedureComponent.getVariants(p, context)
                 is PsiProcList -> ProcListComponent.getVariants(p, context)
+                is PsiParamList -> ParamListComponent.getVariants(p, context)
                 
                 is WhileFile                    ->                    WhileFileComponent.getVariants(p, context)
 
@@ -128,6 +131,7 @@ class WhilePrinter(
                 is PsiRelBexpr -> RelBexprComponent.getAndSaveTemplate(p)
                 is PsiProcedure -> ProcedureComponent.getAndSaveTemplate(p)
                 is PsiProcList -> ProcListComponent.getAndSaveTemplate(p)
+                is PsiParamList -> ParamListComponent.getAndSaveTemplate(p)
                 
                 else -> 5 + 5
             }
@@ -154,6 +158,7 @@ class WhilePrinter(
             is PsiRelBexpr -> return factory.createRelBexprFromText(text)
             is PsiProcedure -> return factory.createProcedureFromText(text)
             is PsiProcList -> return factory.createProcListFromText(text)
+            is PsiParamList -> return factory.createParamListFromText(text)
             else -> return null
         }
     }
@@ -220,6 +225,7 @@ class WhilePrinter(
             is PsiRelBexpr -> RelBexprComponent.getAndSaveTemplate(p)
             is PsiProcedure -> ProcedureComponent.getAndSaveTemplate(p)
             is PsiProcList -> ProcListComponent.getAndSaveTemplate(p)
+            is PsiParamList -> ParamListComponent.getAndSaveTemplate(p)
 
             else -> 5 + 5
         }
@@ -240,7 +246,8 @@ class WhilePrinter(
                 NotBexprComponent.getTemplates().size() +
                 RelBexprComponent.getTemplates().size() +
                 ProcedureComponent.getTemplates().size() +
-                ProcListComponent.getTemplates().size()
+                ProcListComponent.getTemplates().size() +
+                ParamListComponent.getTemplates().size()
 
     }
 
@@ -261,6 +268,7 @@ class WhilePrinter(
             is PsiRelBexpr -> RelBexprComponent.getTmplt(p)
             is PsiProcedure -> ProcedureComponent.getTmplt(p)
             is PsiProcList -> ProcListComponent.getTmplt(p)
+            is PsiParamList -> ParamListComponent.getTmplt(p)
 
             else -> null
         }
