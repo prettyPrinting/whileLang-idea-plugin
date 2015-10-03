@@ -28,7 +28,6 @@ public class ListTemplate<ET: PsiElement, IPT: SmartInsertPlace>(
 ): PsiTemplateGen<ET, IPT>(p, insertPlaceMap, tagPlaceToLineNumberMap, lineEquationMap)
 
 public interface ListComponent<ET: PsiElement>: PsiElementComponent<ET, SmartInsertPlace, ListTemplate<ET, SmartInsertPlace>> {
-    override protected fun getNewElement(text: String): ET? = null
     override public    fun getTemplateFromElement(newP: ET): ListTemplate<ET, SmartInsertPlace>? = null
 
     final val ELEMENTS_TAG: String
@@ -40,8 +39,6 @@ public interface ListComponent<ET: PsiElement>: PsiElementComponent<ET, SmartIns
     }
 
     open public fun getNormalizedElement(p: ET): ET? = null
-
-    public fun getListElement(text: String): ET?
 
     /// Deletes indentation //TODO
 //    public fun getNormalizedList(p: ET): ET?

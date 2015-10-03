@@ -19,11 +19,11 @@ public class ParamListComponent(
 {
     override public fun getNormalizedElement(p: PsiParamList): PsiParamList? {
         val normalizedText = p.deleteSpaces()
-        val element = getListElement(normalizedText)
+        val element = getNewElement(normalizedText)
         return element
     }
 
-    override public fun getListElement(text: String): PsiParamList? {
+    override public fun getNewElement(text: String): PsiParamList? {
         try {
             val elementFactory = WhileElementFactory(printer.getProject())
             val newP = elementFactory.createParamListFromText(text)
