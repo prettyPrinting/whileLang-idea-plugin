@@ -1,4 +1,9 @@
 out
 .idea/workspace.xml
+.idea/compiler.xml
+.idea/copyright
+.idea/modules.xml
+.idea/vcs.xml
 .gradle
 build
+*.iml
