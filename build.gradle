@@ -87,6 +87,12 @@ task setup {
     }
 }
 
+//gradle.build {
+//    dependsOn printergenerator.run
+//}
+
+compileKotlin.dependsOn(":printergenerator:run")
+
 task wrapper(type: Wrapper) {
     gradleVersion = '2.5'
 }

@@ -7,3 +7,6 @@ out
 .gradle
 build
 *.iml
+gen/com/intellij/whileLang/components
+gen/com/intellij/whileLang/templateBase
+gen/com/intellij/whileLang/printer

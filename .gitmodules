@@ -1,0 +1,3 @@
+[submodule "printergenerator"]
+	path = printergenerator
+	url = https://igorozernykh@bitbucket.org/igorozernykh/printergenerator.git
