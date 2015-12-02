@@ -1,0 +1,19 @@
+<printer specificImport="" defaultFromText="createStatementFromText">
+    <file fileClassName="WhileFileComponent" filePsiClass="WhileFile"/>
+    <component name="AssignStmtComponent" psiClass="PsiAssignStmt" fromText="Assignment"/>
+    <component name="IfStmtComponent" psiClass="PsiIfStmt" fromText="IfStmt"/>
+    <component name="ReadStmtComponent" psiClass="PsiReadStmt" fromText="ReadStmt"/>
+    <component name="SkipStmtComponent" psiClass="PsiSkipStmt" fromText="SkipStmt"/>
+    <component name="WhileStmtComponent" psiClass="PsiWhileStmt" fromText="While"/>
+    <component name="StmtListComponent" psiClass="PsiStmtList" fromText="StmtList"/>
+    <component name="WriteStmtComponent" psiClass="PsiWriteStmt" fromText="WriteStmt"/>
+    <component name="BinaryExprComponent" psiClass="PsiBinaryExpr" fromText="BinartExpr"/>
+    <component name="ParenExprComponent" psiClass="PsiParenExpr" fromText="ParenExpr"/>
+    <component name="BinaryBexprComponent" psiClass="PsiBinaryBexpr" fromText="BinartBexpr"/>
+    <component name="ParenBexprComponent" psiClass="PsiParenBexpr" fromText="ParenBexpr"/>
+    <component name="ParamListComponent" psiClass="PsiParamList" fromText="ParamList" />
+    <component name="ProcedureComponent" psiClass="PsiProcedure" fromText="Procedure" />
+    <component name="ProcListComponent" psiClass="PsiProcList" fromText="ProcList" />
+    <component name="RelBexprComponent" psiClass="PsiRelBexpr" fromText="RelBexpr" />
+    <component name="NotBexprComponent" psiClass="PsiNotBexpr" fromText="NotBexpr"/>
+</printer>

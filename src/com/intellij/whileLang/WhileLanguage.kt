@@ -2,28 +2,22 @@ package com.intellij.whileLang
 
 import com.intellij.extapi.psi.PsiFileBase
 import com.intellij.lang.Language
-import com.intellij.lexer.FlexAdapter
-import com.intellij.openapi.editor.DefaultLanguageHighlighterColors
-import com.intellij.openapi.editor.colors.TextAttributesKey
-import com.intellij.openapi.util.IconLoader
-import javax.swing.Icon
-import com.intellij.openapi.editor.colors.TextAttributesKey
-import com.intellij.openapi.editor.markup.TextAttributes
-import com.intellij.openapi.fileTypes.*
+import com.intellij.openapi.fileTypes.FileType
+import com.intellij.openapi.fileTypes.FileTypeConsumer
+import com.intellij.openapi.fileTypes.FileTypeFactory
+import com.intellij.openapi.fileTypes.LanguageFileType
 import com.intellij.openapi.project.Project
-import com.intellij.openapi.vfs.VirtualFile
+import com.intellij.openapi.util.IconLoader
 import com.intellij.psi.FileViewProvider
 import com.intellij.psi.PsiElementVisitor
 import com.intellij.psi.PsiFileFactory
-import com.intellij.psi.TokenType
-import com.intellij.psi.tree.IElementType
-import com.intellij.whileLang.psi.WhileTypes
 import com.intellij.whileLang.psi.impl.*
-import java.awt.*
-import com.intellij.whileLang.*
+import javax.swing.Icon
 
 public class WhileLanguage(): Language("While") {
-    companion object { val INSTANCE = WhileLanguage() }
+    companion object {
+        val INSTANCE = WhileLanguage()
+    }
 }
 
 public class WhileFile(provider: FileViewProvider) : PsiFileBase(provider, WhileLanguage.INSTANCE) {
@@ -96,4 +90,8 @@ public class WhileElementFactory(val project: Project) {
     public fun createNotBexprFromText(text: String): PsiNotBexpr? = createBexprFromText(text) as? PsiNotBexpr
     public fun createBinaryBexprFromText(text: String): PsiBinaryBexpr? = createBexprFromText(text) as? PsiBinaryBexpr
     public fun createRelBexprFromText(text: String): PsiRelBexpr? = createBexprFromText(text) as? PsiRelBexpr
+
+    public fun createParamListFromText(text: String): PsiParamList? {
+        return createProcedureFromText("proc main($text) skip; endp")?.getParamList() as? PsiParamList
+    }
 }
