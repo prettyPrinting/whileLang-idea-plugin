@@ -1,4 +1,4 @@
-# While Idea Plugin [![Build Status](https://travis-ci.org/anlun/whileLang-idea-plugin.svg)](https://travis-ci.org/anlun/whileLang-idea-plugin)
+# While Idea Plugin [![Build Status](https://travis-ci.org/prettyPrinting/whileLang-idea-plugin.svg?branch=master)](https://travis-ci.org/prettyPrinting/whileLang-idea-plugin)
 Custom plugin defining While language. PSI-components are generated with [Grammar-Kit](https://github.com/JetBrains/Grammar-Kit).
 
 # Standalone usage
