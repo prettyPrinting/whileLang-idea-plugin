@@ -1,7 +1,7 @@
 [![Build Status](https://travis-ci.org/IgorOzernykh/whileLang-idea-plugin.svg?branch=research)](https://travis-ci.org/IgorOzernykh/whileLang-idea-plugin)
 
 # While Idea Plugin
-Custom plugin defining While language. PSI-components are generated with [Grammar-Kit](https://github.com/JetBrains/Grammar-Kit))
+Custom plugin defining While language. PSI-components are generated with [Grammar-Kit](https://github.com/JetBrains/Grammar-Kit).
 
 # Standalone usage
 * Clone the project
