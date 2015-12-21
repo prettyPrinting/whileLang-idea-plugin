@@ -19,10 +19,7 @@ public class ExpressionTests : ComponentTest() {
         val templateFileName = getOurPathToComponents() + templateFileName
         val templateFileContent = File(templateFileName).readText()
 
-        val project = getProject()
-        if (project == null) {
-            throw NullPointerException()
-        }
+        val project = getProject() ?: throw NullPointerException()
 
         val whileElementFactory = WhileElementFactory(project)
         val toReprintFileName = getOurPathToComponents() + toReprintFileName
@@ -46,10 +43,10 @@ public class ExpressionTests : ComponentTest() {
         val text = getTestStatement(templateFileName, toReprintFileName)
         val expectedResultFileName = getOurPathToComponents() + expectedFileName
         val expectedResult = File(expectedResultFileName).readText()
-        assertEquals(expectedResult.trim().lineEndTrim(), text.lineEndTrim(), "Incorrect result!")
+        assertEquals("Incorrect result!", expectedResult.trim().lineEndTrim(), text.lineEndTrim())
     }
 
-    Test fun testLet() { testBody("LetT.l", "LetEx.l", "LetExpected.l") }
-    Test fun testProc() { testBody("ProcT.l", "ProcEx.l", "ProcExpected.l") }
-    Test fun testProc1() { testBody("ProcT1.l", "ProcEx1.l", "ProcExpected1.l") }
+    @Test fun testLet() { testBody("LetT.l", "LetEx.l", "LetExpected.l") }
+    @Test fun testProc() { testBody("ProcT.l", "ProcEx.l", "ProcExpected.l") }
+    @Test fun testProc1() { testBody("ProcT1.l", "ProcEx1.l", "ProcExpected1.l") }
 }
