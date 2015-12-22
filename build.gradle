@@ -75,6 +75,8 @@ idea.module {
     }
 }
 
+defaultTasks 'test'
+
 task setup {
     dependsOn ideaModule, ideaProject
     doLast {
