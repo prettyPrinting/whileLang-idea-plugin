@@ -23,8 +23,8 @@ public class WhileLanguage(): Language("While") {
 public class WhileFile(provider: FileViewProvider) : PsiFileBase(provider, WhileLanguage.INSTANCE) {
     override fun getFileType(): FileType { return WhileFileType.INSTANCE }
     override fun accept(visitor: PsiElementVisitor) { visitor.visitFile(this) }
-    public fun getStmtList() : PsiStmtList? = findChildByClass(javaClass<PsiStmtList>())
-    public fun getProcList() : PsiProcList? = findChildByClass(javaClass<PsiProcList>())
+    val stmtList = findChildByClass(PsiStmtList::class.java)
+    val procList = findChildByClass(PsiProcList::class.java)
     override public fun toString() = "While File"
     override public fun getIcon(flags: Int) = super.getIcon(flags)
 }
@@ -55,11 +55,11 @@ public class WhileElementFactory(val project: Project) {
         return PsiFileFactory.getInstance(project).createFileFromText("tmp.l", WhileLanguage.INSTANCE, text) as com.intellij.whileLang.WhileFile
     }
     public fun createProcedureFromText(text: String): PsiProcedure? {
-        return createFileFromText(text).getProcList()?.getProcedureList()?.get(0)
+        return createFileFromText(text).procList?.getProcedureList()?.get(0)
     }
 
     public fun createStmtFromText(text: String): PsiStmt? {
-       return createFileFromText(text).getStmtList()?.getStmtList()?.get(0)
+       return createFileFromText(text).stmtList?.stmtList?.get(0)
     }
     public fun createWriteStmtFromText(text: String): PsiWriteStmt? = createStmtFromText(text) as? PsiWriteStmt
     public fun createReadStmtFromText(text: String): PsiReadStmt? = createStmtFromText(text) as? PsiReadStmt
@@ -69,21 +69,21 @@ public class WhileElementFactory(val project: Project) {
     public fun createSkipStmtFromText(text: String): PsiSkipStmt?  = createStmtFromText(text) as? PsiSkipStmt
 
     public fun createStmtListFromText(text: String): PsiStmtList?  {
-        return createFileFromText(text).getStmtList()
+        return createFileFromText(text).stmtList
     }
     public fun createProcListFromText(text: String): PsiProcList? {
-        return createFileFromText(text).getProcList()
+        return createFileFromText(text).procList
     }
 
     public fun createExprFromText(text: String): PsiExpr? {
-        val writeStmt = createFileFromText("write($text);").getStmtList()?.getStmtList()?.get(0) as? PsiWriteStmt
+        val writeStmt = createFileFromText("write($text);").stmtList?.stmtList?.get(0) as? PsiWriteStmt
         return writeStmt?.getExpr()
     }
     public fun createParenExprFromText(text: String): PsiParenExpr? = createExprFromText(text) as? PsiParenExpr
     public fun createBinaryExprFromText(text: String): PsiBinaryExpr? = createExprFromText(text) as? PsiBinaryExpr
 
     public fun createBexprFromText(text: String): PsiBexpr? {
-        val whileStmt = createFileFromText("while ($text) do skip; od").getStmtList()?.getStmtList()?.get(0) as? PsiWhileStmt
+        val whileStmt = createFileFromText("while ($text) do skip; od").stmtList?.stmtList?.get(0) as? PsiWhileStmt
         return whileStmt?.getBexpr()
     }
     public fun createParenBexprFromText(text: String): PsiParenBexpr? = createBexprFromText(text) as? PsiParenBexpr
