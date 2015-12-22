@@ -43,7 +43,7 @@ public class ExpressionTests : ComponentTest() {
         val text = getTestStatement(templateFileName, toReprintFileName)
         val expectedResultFileName = getOurPathToComponents() + expectedFileName
         val expectedResult = File(expectedResultFileName).readText()
-        assertEquals(expectedResult.trim().lineEndTrim(), text.lineEndTrim(), "Incorrect result!")
+        assertEquals("Incorrect result!", expectedResult.trim().lineEndTrim(), text.lineEndTrim())
     }
 
     @Test fun testLet() { testBody("LetT.l", "LetEx.l", "LetExpected.l") }
