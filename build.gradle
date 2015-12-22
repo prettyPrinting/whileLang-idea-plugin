@@ -49,8 +49,8 @@ repositories {
 dependencies {
     compile 'org.jetbrains.kotlin:kotlin-stdlib:1.0.0-beta-3595'
     compile 'org.jetbrains.kotlin:kotlin-runtime:1.0.0-beta-3595'
-    compile files('format.jar')
-    compile files('printer-core.jar')
+    compile files('printergenerator/libs/format.jar')
+    compile files('printergenerator/libs/printer-core.jar')
     testCompile 'junit:junit:+'
 }
 
