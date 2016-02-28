@@ -25,7 +25,7 @@ sourceSets {
 
     main {
         kotlin {
-            srcDirs = ['src']
+            srcDirs = ['src', 'gen']
         }
         java {
             srcDirs = ['src', 'gen']
@@ -53,6 +53,7 @@ dependencies {
     compile files('printergenerator/libs/printer-core.jar')
     testCompile 'junit:junit:+'
     testCompile 'org.jetbrains.kotlin:kotlin-test:1.0.0'
+    testCompile 'org.jetbrains.kotlin:kotlin-test-junit:1.0.0'
 }
 
 idea.project.ipr {
