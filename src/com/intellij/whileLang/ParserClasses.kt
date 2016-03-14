@@ -7,6 +7,7 @@ import com.intellij.lexer.FlexAdapter
 import com.intellij.openapi.editor.DefaultLanguageHighlighterColors
 import com.intellij.openapi.editor.colors.TextAttributesKey
 import com.intellij.openapi.editor.markup.TextAttributes
+import com.intellij.openapi.fileTypes.SyntaxHighlighter
 import com.intellij.openapi.fileTypes.SyntaxHighlighterBase
 import com.intellij.openapi.fileTypes.SyntaxHighlighterFactory
 import com.intellij.openapi.project.Project
@@ -29,7 +30,7 @@ public class WhileParserDefinition(): ParserDefinition {
         public val WHITE_SPACES: TokenSet = TokenSet.create(TokenType.WHITE_SPACE)
         public val COMMENTS    : TokenSet = TokenSet.create(WhileTypes.COMMENT)
         public val FILE: IFileElementType =
-                IFileElementType(Language.findInstance<WhileLanguage>(javaClass<WhileLanguage>()))
+                IFileElementType(Language.findInstance<WhileLanguage>(WhileLanguage::class.java))
     }
 
     override public fun createLexer(project: Project) = FlexAdapter(_WhileLexer(null))
@@ -88,7 +89,7 @@ public class WhileSyntaxHighlighter(): SyntaxHighlighterBase() {
 }
 
 public class WhileSyntaxHighlighterFactory(): SyntaxHighlighterFactory() {
-    override public fun getSyntaxHighlighter(project: Project, virtualFile: VirtualFile) =
+    override fun getSyntaxHighlighter(project: Project?, virtualFile: VirtualFile?) =
             WhileSyntaxHighlighter()
 }
 

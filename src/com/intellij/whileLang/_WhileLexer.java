@@ -344,12 +344,12 @@ public class _WhileLexer implements FlexLexer {
 
   /* user code: */
   public _WhileLexer() {
-    this((java.io.Reader)null);
+    this(null);
   }
 
 
   public _WhileLexer(java.io.Reader in) {
-    this.zzReader = in;
+    zzReader = in;
   }
 
   /**
